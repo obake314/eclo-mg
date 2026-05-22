@@ -44,3 +44,31 @@ git add README.md .gitignore avant-p/app/public/wp-content/themes/avan-p
 git commit -m "Update avant-p theme"
 git push
 ```
+
+## avant-p の自動デプロイ
+
+`main` ブランチに `avant-p/app/public/wp-content/themes/avan-p/` の変更が push されると、GitHub Actions が本番サーバーへテーマだけを自動同期します。
+
+GitHub の `obake314/eclo-mg` リポジトリで、以下の Secrets を設定してください。
+
+```text
+AVANT_P_SSH_HOST   本番サーバーのホスト名
+AVANT_P_SSH_USER   SSH ユーザー名
+AVANT_P_SSH_KEY    デプロイ用秘密鍵
+AVANT_P_WP_ROOT    本番 WordPress のルートパス
+AVANT_P_SSH_PORT   SSH ポート。省略時は 22
+```
+
+例:
+
+```text
+AVANT_P_WP_ROOT=/home/USER/public_html
+```
+
+同期先は以下になります。
+
+```text
+$AVANT_P_WP_ROOT/wp-content/themes/avan-p/
+```
+
+デプロイ用 SSH ユーザーには、このテーマディレクトリへ書き込める権限が必要です。

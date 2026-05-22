@@ -48,9 +48,29 @@ git push
 
 `WP File Manager` は運用上のリスクになりやすいので、本番で必要な場合だけ有効化してください。
 
-## Git 経由でテーマをデプロイする
+## 自動デプロイ
 
-本番サーバーに `eclo-mg` リポジトリを clone して、`avant-p/scripts/deploy-theme.sh` を実行します。
+`main` ブランチに `avant-p/app/public/wp-content/themes/avan-p/` の変更が push されると、GitHub Actions が本番サーバーへテーマだけを自動同期します。
+
+GitHub の `obake314/eclo-mg` リポジトリで、以下の Secrets を設定してください。
+
+```text
+AVANT_P_SSH_HOST   本番サーバーのホスト名
+AVANT_P_SSH_USER   SSH ユーザー名
+AVANT_P_SSH_KEY    デプロイ用秘密鍵
+AVANT_P_WP_ROOT    本番 WordPress のルートパス
+AVANT_P_SSH_PORT   SSH ポート。省略時は 22
+```
+
+同期先:
+
+```text
+$AVANT_P_WP_ROOT/wp-content/themes/avan-p/
+```
+
+## 手動デプロイ
+
+本番サーバー上で `eclo-mg` リポジトリを clone して、`avant-p/scripts/deploy-theme.sh` を実行する方法も使えます。
 
 例:
 
@@ -63,7 +83,7 @@ WP_ROOT=/home/USER/public_html ./scripts/deploy-theme.sh
 
 `WP_ROOT` は本番 WordPress のルートディレクトリです。スクリプトは `avan-p` テーマだけを `wp-content/themes/avan-p/` に同期します。
 
-必要なら本番サーバーの cron や webhook から上記の `git pull` とデプロイコマンドを呼び出せます。
+通常は GitHub Actions の自動デプロイを使い、サーバー内で直接反映したい時だけこの手順を使います。
 
 ## ローカル作業フロー
 

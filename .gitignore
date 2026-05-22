@@ -3,6 +3,9 @@
 
 !/.gitignore
 !/README.md
+!/.github/
+!/.github/workflows/
+!/.github/workflows/**
 !/avant-p/
 
 ### macOS
