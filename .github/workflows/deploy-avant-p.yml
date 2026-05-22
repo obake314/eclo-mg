@@ -59,12 +59,24 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
+      - name: Check deploy key
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh-keygen -y -f ~/.ssh/deploy_key > /tmp/deploy_key.pub
+          ssh-keygen -lf /tmp/deploy_key.pub
+
       - name: Test SSH connection
         shell: bash
         run: |
           set -euo pipefail
-          ssh $SSH_OPTS -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            "pwd && test -d '$WP_ROOT' && test -d '$WP_ROOT/wp-content/themes'"
+          if ! ssh $SSH_OPTS -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "pwd && test -d '$WP_ROOT' && test -d '$WP_ROOT/wp-content/themes'"; then
+            echo "::group::SSH debug"
+            ssh -vvv $SSH_OPTS -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "true" || true
+            echo "::endgroup::"
+            exit 1
+          fi
 
       - name: Ensure remote theme directory
         shell: bash
