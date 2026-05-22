@@ -1,10 +1,46 @@
+### Track only selected eclo-mg managed sites
+/*
+
+!/.gitignore
+!/README.md
+!/avant-p/
+
 ### macOS
 .DS_Store
 ._*
 
-### Editor
-.idea/
-.vscode/
+### avant-p: Local by Flywheel / local environment
+/avant-p/conf/
+/avant-p/logs/
 
-### Logs
-*.log
+### avant-p: WordPress core and environment files
+/avant-p/app/public/*
+!/avant-p/app/public/wp-content/
+/avant-p/app/public/wp-config.php
+/avant-p/app/public/local-*.php
+
+### avant-p: WordPress content generated at runtime
+/avant-p/app/public/wp-content/*
+/avant-p/app/public/wp-content/uploads/
+/avant-p/app/public/wp-content/upgrade/
+/avant-p/app/public/wp-content/upgrade-temp-backup/
+/avant-p/app/public/wp-content/ai1wm-backups/
+/avant-p/app/public/wp-content/cache/
+/avant-p/app/public/wp-content/backup*/
+/avant-p/app/public/wp-content/backups/
+/avant-p/app/public/wp-content/debug.log
+/avant-p/app/public/wp-content/*.log
+/avant-p/app/public/wp-content/*.sql
+/avant-p/app/public/wp-content/*.wpress
+
+### avant-p: track only custom project code
+!/avant-p/app/
+!/avant-p/app/public/
+!/avant-p/app/public/wp-content/
+!/avant-p/app/public/wp-content/themes/
+/avant-p/app/public/wp-content/themes/*
+!/avant-p/app/public/wp-content/themes/avan-p/
+!/avant-p/app/public/wp-content/themes/avan-p/**
+
+# Add more managed sites by unignoring the site directory above,
+# then adding site-specific WordPress ignore rules.

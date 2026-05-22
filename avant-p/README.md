@@ -2,6 +2,8 @@
 
 このディレクトリは、Local で管理している WordPress のうち、Git デプロイ対象になる自作テーマだけを管理します。
 
+Git のルートは `Local Sites` ディレクトリです。このサイトは `eclo-mg` リポジトリ内の `avant-p/` として管理されます。
+
 ## Git 管理するもの
 
 - `app/public/wp-content/themes/avan-p/`
@@ -17,20 +19,14 @@
 - All-in-One WP Migration の `.wpress` バックアップ
 - 外部テーマ、外部プラグイン、翻訳ファイル、キャッシュ
 
-## 初回コミット
+## コミット例
 
 ```bash
+cd "/Users/t_okazaki/Local Sites"
 git status --short
-git add .gitignore README.md scripts/deploy-theme.sh app/public/wp-content/themes/avan-p
-git commit -m "Set up WordPress theme deploy repo"
-```
-
-GitHub などのリモートを作ったあと:
-
-```bash
-git remote add origin git@github.com:USER/REPO.git
-git branch -M main
-git push -u origin main
+git add avant-p/app/public/wp-content/themes/avan-p
+git commit -m "Update avant-p theme"
+git push
 ```
 
 ## 本番サーバーの準備
@@ -59,8 +55,9 @@ git push -u origin main
 例:
 
 ```bash
-cd /home/USER/repos/eclo-mg/avant-p
+cd /home/USER/repos/eclo-mg
 git pull --ff-only origin main
+cd avant-p
 WP_ROOT=/home/USER/public_html ./scripts/deploy-theme.sh
 ```
 
@@ -71,7 +68,7 @@ WP_ROOT=/home/USER/public_html ./scripts/deploy-theme.sh
 ## ローカル作業フロー
 
 ```bash
-cd /path/to/eclo-mg
+cd "/Users/t_okazaki/Local Sites"
 git status --short
 git add avant-p/app/public/wp-content/themes/avan-p
 git commit -m "Update theme"
@@ -81,7 +78,8 @@ git push
 その後、本番サーバーで:
 
 ```bash
-cd /home/USER/repos/eclo-mg/avant-p
+cd /home/USER/repos/eclo-mg
 git pull --ff-only origin main
+cd avant-p
 WP_ROOT=/home/USER/public_html ./scripts/deploy-theme.sh
 ```
