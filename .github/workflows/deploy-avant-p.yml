@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - "avant-p/app/public/wp-content/themes/avan-p/**"
-      - "avant-p/scripts/deploy-theme.sh"
-      - ".github/workflows/deploy-avant-p.yml"
   workflow_dispatch:
 
 concurrency:
