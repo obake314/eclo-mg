@@ -24,10 +24,11 @@ jobs:
       SSH_PORT: ${{ secrets.AVANT_P_SSH_PORT || '22' }}
       WP_ROOT: ${{ secrets.AVANT_P_WP_ROOT }}
       THEME_NAME: avan-p
+      SSH_OPTS: "-o BatchMode=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Validate secrets
         shell: bash
@@ -58,11 +59,18 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
+      - name: Test SSH connection
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh $SSH_OPTS -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "pwd && test -d '$WP_ROOT' && test -d '$WP_ROOT/wp-content/themes'"
+
       - name: Ensure remote theme directory
         shell: bash
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+          ssh $SSH_OPTS -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
             "mkdir -p '$WP_ROOT/wp-content/themes/$THEME_NAME'"
 
       - name: Sync theme
@@ -73,7 +81,7 @@ jobs:
             --exclude=".DS_Store" \
             --exclude="node_modules/" \
             --exclude=".git/" \
-            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT" \
+            -e "ssh $SSH_OPTS -i ~/.ssh/deploy_key -p $SSH_PORT" \
             "avant-p/app/public/wp-content/themes/$THEME_NAME/" \
             "$SSH_USER@$SSH_HOST:$WP_ROOT/wp-content/themes/$THEME_NAME/"
 
@@ -81,5 +89,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+          ssh $SSH_OPTS -i ~/.ssh/deploy_key -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
             "test -f '$WP_ROOT/wp-content/themes/$THEME_NAME/style.css' && echo 'Deployed $THEME_NAME theme.'"
