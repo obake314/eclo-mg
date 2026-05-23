@@ -47,7 +47,7 @@ header {
 }
 .site-title {
   margin: 0;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: var(--type-nav-size);
   line-height: 1;
 }
 #content-wrapper .site-title a {
@@ -111,8 +111,8 @@ header {
   margin: 0 auto;
   padding: 18px clamp(16px, 3vw, 36px);
   color: rgba(32, 33, 36, 0.48);
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line-height);
   text-align: right;
 }
 @media screen and (max-width: 680px) {
