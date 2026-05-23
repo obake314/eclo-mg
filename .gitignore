@@ -7,6 +7,7 @@
 !/.github/workflows/
 !/.github/workflows/**
 !/avant-p/
+!/spacenoid/
 
 ### macOS
 .DS_Store
@@ -44,6 +45,51 @@
 /avant-p/app/public/wp-content/themes/*
 !/avant-p/app/public/wp-content/themes/avan-p/
 !/avant-p/app/public/wp-content/themes/avan-p/**
+
+### spacenoid: Local by Flywheel / local environment
+/spacenoid/conf/
+/spacenoid/logs/
+
+### spacenoid: WordPress core and environment files
+/spacenoid/app/public/*
+!/spacenoid/app/public/wp-content/
+/spacenoid/app/public/wp-config.php
+/spacenoid/app/public/local-*.php
+
+### spacenoid: WordPress content generated at runtime
+/spacenoid/app/public/wp-content/*
+/spacenoid/app/public/wp-content/uploads/
+/spacenoid/app/public/wp-content/upgrade/
+/spacenoid/app/public/wp-content/upgrade-temp-backup/
+/spacenoid/app/public/wp-content/ai1wm-backups/
+/spacenoid/app/public/wp-content/cache/
+/spacenoid/app/public/wp-content/wpo-cache/
+/spacenoid/app/public/wp-content/wflogs/
+/spacenoid/app/public/wp-content/siteguard/
+/spacenoid/app/public/wp-content/ewww/
+/spacenoid/app/public/wp-content/languages/
+/spacenoid/app/public/wp-content/plugins/
+/spacenoid/app/public/wp-content/backup*/
+/spacenoid/app/public/wp-content/backups/
+/spacenoid/app/public/wp-content/debug.log
+/spacenoid/app/public/wp-content/*.log
+/spacenoid/app/public/wp-content/*.sql
+/spacenoid/app/public/wp-content/*.wpress
+
+### spacenoid: track only custom project code
+!/spacenoid/app/
+!/spacenoid/app/public/
+!/spacenoid/app/public/wp-content/
+!/spacenoid/app/public/wp-content/themes/
+/spacenoid/app/public/wp-content/themes/*
+!/spacenoid/app/public/wp-content/themes/spacenoid/
+!/spacenoid/app/public/wp-content/themes/spacenoid/**
+
+### Always ignore local/generated artifacts re-exposed by site unignore rules
+**/.DS_Store
+**/._*
+/avant-p/app/sql/
+/spacenoid/app/sql/
 
 # Add more managed sites by unignoring the site directory above,
 # then adding site-specific WordPress ignore rules.

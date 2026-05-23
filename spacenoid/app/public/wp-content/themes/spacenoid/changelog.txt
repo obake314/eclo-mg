@@ -1,0 +1,82 @@
+### v1.0.7 12-2-2016
+	- added - Microformats supported
+	- added - footer theme link
+	- changed - style.css
+	- changed - inc/format/content.php
+	- changed - inc/part/layout-meta.php
+	- changed - inc/function/thecontent.php
+	- changed - footer.php
+
+### v1.0.6 11-30-2016
+	- changed - Add on links to premium version
+	- changed - style.css
+	- changed - inc/admin/about-theme/section/getting-started.php
+	- changed - inc/panels/extend-options.php
+
+### v1.0.5 11-16-2016
+	- added - Weh about page
+	- added - logo upload to customizer
+	- added - copyright footer option to customizer
+	- added - background option to customizer
+	- added - background image option to customizer
+	- added - front page option to customizer
+	- added - footer widget option to customizer
+	- added - social profiles option to customizer
+	- changed - readme.txt
+	- changed - style.css
+	- changed - header.php
+	- changed - footer.php
+	- changed - function.php
+	- changed - inc/function/customizer.php
+	- added - inc/panels/extend-options.php
+	- added - inc/panels/general-options.php
+	- added - inc/panels/photostack-options.php
+	- added - inc/panels/social-options.php
+	- added - inc/admin
+
+### v1.0.4 3-4-2016
+	- UPDATED	: hook scripts/styles for photostack nad classie
+	- function.php
+
+### v1.0.3 3-4-2016
+	- ADDED		: hook scripts/styles for photostack nad classie
+	- REMOVED	: weh_lite_pagination
+	- function.php
+
+### v1.0.2 2-2-2016
+	- ADDED		: function for register_nav_menu and internationalized it
+	- FIXED		: Photostack js error on single post
+	- REMOVED	: get_tag_id_by_name function because related post not exist anymore
+	- inc/function/custom.php
+	- inc/function/thecontent.php
+	- inc/function/themeta.php
+	- inc/part/layout-meta.php
+	- inc/part/layout-related.php
+	- inc/part/photostack.php
+	- function.php
+
+### v1.0.1 1-25-2016
+	- DELETED	: Admin page and all related to this page
+	- ADDED		: Translation to text string
+	- CHANGED	: Comment form code structure to aviod hard coded
+	- CHANGED	: "caller_get_posts" into "ignore_sticky_posts"
+	- FIXED		: Password Protected (the password is “enter”) and Post Format: Gallery post
+	- DELETED	: Flexslider from function.php
+	- DELETED	: Share post function
+	- style.css
+	- function.php
+	- searchform.php
+	- readme.txt
+	- footer.php
+	- comments.php
+	- inc/function/comment.php
+	- inc/function/custom.php
+	- inc/function/customizer.php
+	- inc/function/thecontent.php
+	- inc/function/themeta.php
+	- inc/part/related-post.php
+	- img
+	- languages
+
+### v1.0.0 10-28-2015
+	- Initial release
