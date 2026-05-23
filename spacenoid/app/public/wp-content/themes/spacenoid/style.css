@@ -21,6 +21,38 @@ Theme Name: spacenoid
     HGS明朝E, メイリオ, Meiryo, serif;
   --font-google: "Hammersmith One", sans-serif;
   --font-serif-weight: 400;
+  --type-body-family: var(--font-family);
+  --type-body-size: 16px;
+  --type-body-weight: 400;
+  --type-body-line-height: 1.8;
+  --type-body-letter-spacing: 0;
+  --type-heading-family: var(--font-heading-en);
+  --type-heading-weight: 400;
+  --type-heading-line-height: 1.15;
+  --type-heading-letter-spacing: 0.1em;
+  --type-heading-transform: uppercase;
+  --type-page-title-size: clamp(32px, 5vw, 56px);
+  --type-section-title-size: clamp(26px, 4vw, 42px);
+  --type-card-title-family: var(--font-serif);
+  --type-card-title-size: clamp(18px, 2vw, 24px);
+  --type-card-title-weight: var(--font-serif-weight);
+  --type-card-title-line-height: 1.4;
+  --type-card-title-letter-spacing: 0.04em;
+  --type-label-family: var(--font-heading-en);
+  --type-label-size: 12px;
+  --type-label-weight: 400;
+  --type-label-line-height: 1.2;
+  --type-label-letter-spacing: 0.12em;
+  --type-label-transform: uppercase;
+  --type-meta-size: 14px;
+  --type-meta-line-height: 1.6;
+  --type-small-size: 12px;
+  --type-small-line-height: 1.6;
+  --type-nav-size: clamp(14px, 1.4vw, 18px);
+  --type-nav-letter-spacing: 0.08em;
+  --type-brand-ja-size: clamp(15px, 1.4vw, 19px);
+  --type-brand-en-size: 10px;
+  --type-display-size: clamp(40px, 8vw, 100px);
   --font-s: 14px;
   --font-m: 16px;
   --font-l: 19px;
@@ -45,20 +77,19 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  font-size:var(--font-m);
+  font-size: var(--type-body-size);
   height: 100%;
   position: relative;
 
   color: var(--color-text);
 	height: 100%;
 	box-sizing: border-box;
-	font-family: var(--font-family);
+	font-family: var(--type-body-family);
 	font-style: normal;
 
-	line-height: 1.7;
-	font-weight: 400;
-	font-size: 16px;
-	letter-spacing:0.02em;
+	line-height: var(--type-body-line-height);
+	font-weight: var(--type-body-weight);
+	letter-spacing: var(--type-body-letter-spacing);
 	font-feature-settings: "kern" 1;
 	font-kerning: normal;
 	font-optical-sizing: auto;
@@ -74,8 +105,8 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 600;
-  line-height: 1;
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line-height);
 }
 h2 {
   font-size: var(--font-xxl);
@@ -250,16 +281,16 @@ header > div ul {
 	justify-content:space-between;
 }
 header > div ul li a {
-    font-size: var(--font-l);
+    font-size: var(--type-nav-size);
     font-family: var(--font-heading-en);
     font-weight: 400;
-    letter-spacing: 0.08em;
+    letter-spacing: var(--type-nav-letter-spacing);
 }
 .site-title {
   margin: var(--space2) auto;
-  font-family: var(--font-heading-en);
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  font-family: var(--type-heading-family);
+  font-weight: var(--type-heading-weight);
+  letter-spacing: var(--type-heading-letter-spacing);
 }
 .site-brand {
   display: inline-grid;
@@ -287,20 +318,20 @@ header > div ul li a {
 }
 .site-title-ja {
   color: #111;
-  font-family: var(--font-family);
-  font-size: clamp(15px, 1.4vw, 19px);
+  font-family: var(--type-body-family);
+  font-size: var(--type-brand-ja-size);
   font-weight: 500;
   letter-spacing: 0.08em;
   line-height: 1.1;
 }
 .site-title-en {
   color: rgba(32, 33, 36, 0.58);
-  font-family: var(--font-heading-en);
-  font-size: 10px;
-  font-weight: 400;
+  font-family: var(--type-label-family);
+  font-size: var(--type-brand-en-size);
+  font-weight: var(--type-label-weight);
   letter-spacing: 0.18em;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: var(--type-label-transform);
 }
 .logo {
   margin: var(--space2) auto;
@@ -371,16 +402,16 @@ header > div ul li a {
   border: none;
   padding: var(--space2);
   text-align: left;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--type-meta-size);
+  line-height: var(--type-meta-line-height);
 }
 .outline_info .table_outline td {
   width: 68%;
   border: none;
   text-align: left;
   padding: var(--space2);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--type-meta-size);
+  line-height: var(--type-meta-line-height);
 }
 .copy {
   position: absolute;
@@ -411,19 +442,19 @@ header > div ul li a {
     opacity: 0;
 }
 .name {
-  font-family: var(--font-heading-en);
-  font-weight: var(--font-serif-weight);
+  font-family: var(--type-heading-family);
+  font-weight: var(--type-heading-weight);
   text-align: center;
 }
 .name span {
   display: block;
-  font-size:var(--font-s);
+  font-size: var(--type-label-size);
   margin-bottom: 10px;
 }
 .name strong {
   display: block;
-  font-size:var(--font-xxxl);
-  font-weight: var(--font-serif-weight);
+  font-size: var(--type-display-size);
+  font-weight: var(--type-heading-weight);
 }
 .intro {
   padding: var(--space4);
@@ -455,7 +486,7 @@ header > div ul li a {
   margin-bottom: var(--space6);
 }
 .entry-content p {
-  line-height: 1.9;
+  line-height: var(--type-body-line-height);
 }
 .section_content {
   margin: 0 auto;
