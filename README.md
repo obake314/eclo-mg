@@ -129,3 +129,26 @@ $SPACENOID_WP_ROOT/wp-content/themes/spacenoid/
 ```
 
 Lolipop 側で SSH を有効化し、`SPACENOID_SSH_KEY` に対応する公開鍵がサーバー側で許可されている必要があります。デプロイ用 SSH ユーザーには、このテーマディレクトリへ書き込める権限が必要です。
+
+## spacenoid のDBデプロイ
+
+運用開始前の初期投入に限り、ローカルDBを本番DBへ上書き import できます。通常運用開始後は、本番の投稿・問い合わせ・ユーザー情報を消す可能性があるため使わないでください。
+
+```bash
+cd "/Users/t_okazaki/Local Sites/spacenoid"
+
+SPACENOID_SSH_HOST="ssh.lolipop.jp" \
+SPACENOID_SSH_USER="hippy.jp-kakashi" \
+SPACENOID_SSH_PORT="2222" \
+SPACENOID_SSH_KEY_FILE="$HOME/.ssh/spacenoid-deploy-rsa" \
+SPACENOID_WP_ROOT="/home/users/2/hippy.jp-kakashi/web/spacenoid/test" \
+SPACENOID_PROD_URL="https://spacenoid.jp/test" \
+CONFIRM_DB_DEPLOY="deploy-spacenoid-db" \
+./scripts/deploy-db.sh
+```
+
+本番側では import 前に以下へDBバックアップを作成します。
+
+```text
+$SPACENOID_WP_ROOT/wp-content/db-backups/pre-db-deploy-YYYYMMDDHHMMSS.sql
+```

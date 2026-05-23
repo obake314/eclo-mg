@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SITE_NAME="avant-p"
+SITE_NAME="spacenoid"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOCAL_WP_ROOT="${LOCAL_WP_ROOT:-${REPO_ROOT}/app/public}"
 LOCAL_DB_SOCKET="${LOCAL_DB_SOCKET:-}"
 
-SSH_HOST="${AVANT_P_SSH_HOST:-${SSH_HOST:-}}"
-SSH_USER="${AVANT_P_SSH_USER:-${SSH_USER:-}}"
-SSH_PORT="${AVANT_P_SSH_PORT:-${SSH_PORT:-22}}"
-SSH_KEY="${AVANT_P_SSH_KEY:-${SSH_KEY:-}}"
-SSH_KEY_FILE="${AVANT_P_SSH_KEY_FILE:-${SSH_KEY_FILE:-}}"
-WP_ROOT="${AVANT_P_WP_ROOT:-${WP_ROOT:-}}"
-PROD_URL="${AVANT_P_PROD_URL:-${PROD_URL:-}}"
-LOCAL_URL="${AVANT_P_LOCAL_URL:-${LOCAL_URL:-}}"
+SSH_HOST="${SPACENOID_SSH_HOST:-${SSH_HOST:-}}"
+SSH_USER="${SPACENOID_SSH_USER:-${SSH_USER:-}}"
+SSH_PORT="${SPACENOID_SSH_PORT:-${SSH_PORT:-2222}}"
+SSH_KEY="${SPACENOID_SSH_KEY:-${SSH_KEY:-}}"
+SSH_KEY_FILE="${SPACENOID_SSH_KEY_FILE:-${SSH_KEY_FILE:-}}"
+WP_ROOT="${SPACENOID_WP_ROOT:-${WP_ROOT:-}}"
+PROD_URL="${SPACENOID_PROD_URL:-${PROD_URL:-}}"
+LOCAL_URL="${SPACENOID_LOCAL_URL:-${LOCAL_URL:-}}"
 CONFIRM="${CONFIRM_DB_DEPLOY:-}"
 
 required=(
@@ -31,7 +31,7 @@ for name in "${required[@]}"; do
 done
 
 if [[ -z "${SSH_KEY_FILE}" && -z "${SSH_KEY}" ]]; then
-  echo "Error: AVANT_P_SSH_KEY_FILE or AVANT_P_SSH_KEY is required."
+  echo "Error: SPACENOID_SSH_KEY_FILE or SPACENOID_SSH_KEY is required."
   exit 1
 fi
 
@@ -115,7 +115,7 @@ if [[ -z "${LOCAL_URL}" ]]; then
 fi
 
 if [[ -z "${LOCAL_URL}" ]]; then
-  echo "Error: could not determine local URL. Set AVANT_P_LOCAL_URL."
+  echo "Error: could not determine local URL. Set SPACENOID_LOCAL_URL."
   exit 1
 fi
 
