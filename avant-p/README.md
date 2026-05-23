@@ -10,6 +10,28 @@ Git のルートは `Local Sites` ディレクトリです。このサイトは 
 - デプロイ補助スクリプト
 - この README
 
+## FSE とトップページ
+
+このテーマは FSE / ブロックテーマ構成です。
+
+- `theme.json`
+- `parts/header.html`
+- `parts/footer.html`
+- `templates/front-page.html`
+- `templates/page-home.html`
+- `templates/page.html`
+- `templates/index.html`
+
+トップページは固定ページ `home` の本文を表示します。WordPress 管理画面で以下を設定してください。
+
+1. 固定ページ `home` を作成する
+2. 表示設定で「ホームページの表示」を「固定ページ」にする
+3. ホームページに `home` を選ぶ
+
+テーマ有効化後、slug が `home` の固定ページがあり、まだホームページが未設定であれば自動で `home` をホームページに設定します。
+
+`home` の本文が空の場合は、`patterns/home.php` の内容を一度だけ自動投入します。以後のTOPコンテンツは固定ページ `home` の本文として管理します。
+
 ## Git 管理しないもの
 
 - WordPress 本体

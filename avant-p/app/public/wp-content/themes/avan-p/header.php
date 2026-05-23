@@ -20,13 +20,20 @@
                     </a>
                 </h1>
             </div>
-            <nav class="main-navigation">
+            <button class="drawer-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+                <span class="drawer-toggle-line"></span>
+                <span class="drawer-toggle-line"></span>
+                <span class="drawer-toggle-line"></span>
+                <span class="screen-reader-text">メニューを開閉</span>
+            </button>
+            <nav id="site-navigation" class="main-navigation" aria-label="Main navigation">
                 <ul class="nav-menu">
                     <li><a href="https://avant-p.co.jp#about">About</a></li>
                     <li><a href="https://avant-p.co.jp#services">Services</a></li>
                     <li><a href="https://avant-p.co.jp#contact">Contact</a></li>
                 </ul>
             </nav>
+            <button class="drawer-backdrop" type="button" aria-label="メニューを閉じる"></button>
         </div>
     </div>
 </header>
