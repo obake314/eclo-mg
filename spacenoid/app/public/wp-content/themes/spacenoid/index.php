@@ -12,25 +12,25 @@ get_header();
     $slider_items = array(
         array(
             'type' => 'link',
-            'url' => '/project#event',
+            'url' => home_url('/project#event'),
             'title_ja' => 'イベント',
             'title_en' => 'EVENT',
         ),
         array(
             'type' => 'link',
-            'url' => '/project#stage',
+            'url' => home_url('/project#stage'),
             'title_ja' => '舞台制作',
             'title_en' => 'STAGE',
         ),
         array(
             'type' => 'link',
-            'url' => '/contact',
+            'url' => home_url('/contact'),
             'title_ja' => 'お問い合わせ',
             'title_en' => 'CONTACT US',
         ),
         array(
             'type' => 'link',
-            'url' => '/members',
+            'url' => home_url('/members'),
             'title_ja' => '所属',
             'title_en' => 'MEMBERS',
         ),
@@ -46,7 +46,7 @@ get_header();
         ),
         array(
             'type' => 'link',
-            'url' => '/writers',
+            'url' => home_url('/writers'),
             'title_ja' => '脚本家',
             'title_en' => 'Spacenoid Writers Room',
         ),
@@ -59,12 +59,12 @@ get_header();
                 '会社名' => '株式会社スペースノイドカンパニー',
                 '所在地' => '〒111-0042<br>東京都台東区寿1-6-7<br>ユーハイツ伸光901',
                 '設立' => '2018年5月16日',
-                'お問い合わせ' => '<a href="/contact">お問い合わせはこちら</a>',
+                'お問い合わせ' => '<a href="' . esc_url(home_url('/contact')) . '">お問い合わせはこちら</a>',
             ),
         ),
         /* array(
             'type' => 'kakashido',
-            'url' => '/kakashido',
+            'url' => home_url('/kakashido'),
             'image' => 'https://spacenoid.jp/test/wp-content/uploads/member_ito.png',
             'title' => '案山子堂',
         ),　*/
