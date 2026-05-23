@@ -45,6 +45,19 @@ function spacenoid_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'spacenoid_enqueue_assets');
 
+function spacenoid_add_page_slug_body_class($classes) {
+    if (is_page()) {
+        $page = get_queried_object();
+
+        if ($page instanceof WP_Post && !empty($page->post_name)) {
+            $classes[] = 'page-' . sanitize_html_class($page->post_name);
+        }
+    }
+
+    return $classes;
+}
+add_filter('body_class', 'spacenoid_add_page_slug_body_class');
+
 function spacenoid_enqueue_editor_assets() {
     wp_enqueue_style(
         'spacenoid-editor-style',
