@@ -8,6 +8,7 @@
 !/.github/workflows/**
 !/avant-p/
 !/spacenoid/
+!/azalove/
 
 ### macOS
 .DS_Store
@@ -85,11 +86,52 @@
 !/spacenoid/app/public/wp-content/themes/spacenoid/
 !/spacenoid/app/public/wp-content/themes/spacenoid/**
 
+### azalove: Local by Flywheel / local environment
+/azalove/conf/
+/azalove/logs/
+
+### azalove: WordPress core and environment files
+/azalove/app/public/*
+!/azalove/app/public/wp-content/
+/azalove/app/public/wp-config.php
+/azalove/app/public/local-*.php
+
+### azalove: WordPress content generated at runtime
+/azalove/app/public/wp-content/*
+/azalove/app/public/wp-content/uploads/
+/azalove/app/public/wp-content/upgrade/
+/azalove/app/public/wp-content/upgrade-temp-backup/
+/azalove/app/public/wp-content/ai1wm-backups/
+/azalove/app/public/wp-content/cache/
+/azalove/app/public/wp-content/wpo-cache/
+/azalove/app/public/wp-content/wflogs/
+/azalove/app/public/wp-content/siteguard/
+/azalove/app/public/wp-content/ewww/
+/azalove/app/public/wp-content/languages/
+/azalove/app/public/wp-content/plugins/
+/azalove/app/public/wp-content/updraft/
+/azalove/app/public/wp-content/backup*/
+/azalove/app/public/wp-content/backups/
+/azalove/app/public/wp-content/debug.log
+/azalove/app/public/wp-content/*.log
+/azalove/app/public/wp-content/*.sql
+/azalove/app/public/wp-content/*.wpress
+
+### azalove: track only custom project code
+!/azalove/app/
+!/azalove/app/public/
+!/azalove/app/public/wp-content/
+!/azalove/app/public/wp-content/themes/
+/azalove/app/public/wp-content/themes/*
+!/azalove/app/public/wp-content/themes/azarashilove/
+!/azalove/app/public/wp-content/themes/azarashilove/**
+
 ### Always ignore local/generated artifacts re-exposed by site unignore rules
 **/.DS_Store
 **/._*
 /avant-p/app/sql/
 /spacenoid/app/sql/
+/azalove/app/sql/
 
 # Add more managed sites by unignoring the site directory above,
 # then adding site-specific WordPress ignore rules.

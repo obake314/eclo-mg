@@ -1,0 +1,105 @@
+name: Deploy azarashilove theme
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "azalove/app/public/wp-content/themes/azarashilove/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-azarashilove
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      SSH_HOST: ${{ secrets.AZARASHILOVE_SSH_HOST }}
+      SSH_USER: ${{ secrets.AZARASHILOVE_SSH_USER }}
+      SSH_PASSWORD: ${{ secrets.AZARASHILOVE_SSH_PASSWORD }}
+      SSH_PORT: ${{ secrets.AZARASHILOVE_SSH_PORT || '2222' }}
+      WP_ROOT: ${{ secrets.AZARASHILOVE_WP_ROOT }}
+      THEME_NAME: azarashilove
+      LOCAL_THEME: azalove/app/public/wp-content/themes/azarashilove
+      SSH_OPTS: "-o BatchMode=no -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            "SSH_HOST:AZARASHILOVE_SSH_HOST"
+            "SSH_USER:AZARASHILOVE_SSH_USER"
+            "SSH_PASSWORD:AZARASHILOVE_SSH_PASSWORD"
+            "WP_ROOT:AZARASHILOVE_WP_ROOT"
+          )
+          for item in "${required[@]}"; do
+            env_name="${item%%:*}"
+            secret_name="${item##*:}"
+            if [[ -z "${!env_name}" ]]; then
+              echo "Missing required secret: $secret_name"
+              exit 1
+            fi
+          done
+
+      - name: Install deploy tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y sshpass lftp
+
+      - name: Prepare known hosts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        shell: bash
+        run: |
+          set -euo pipefail
+          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "pwd && test -d '$WP_ROOT' && test -d '$WP_ROOT/wp-content/themes'"
+
+      - name: Ensure remote theme directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "mkdir -p '$WP_ROOT/wp-content/themes/$THEME_NAME'"
+
+      - name: Sync theme over SFTP
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
+          lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          set sftp:auto-confirm yes
+          set net:max-retries 2
+          set net:timeout 20
+          mirror -R --delete --verbose \
+            --exclude-glob .DS_Store \
+            --exclude-glob node_modules/ \
+            --exclude-glob vendor/ \
+            --exclude-glob .git/ \
+            "$LOCAL_THEME/" "$remote_theme/"
+          bye
+          EOF
+
+      - name: Confirm deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "test -f '$WP_ROOT/wp-content/themes/$THEME_NAME/style.css' && echo 'Deployed $THEME_NAME theme.'"
