@@ -96,8 +96,6 @@ add_action( 'after_setup_theme', 'azarashilove_content_width', 0 );
  */
 function azarashilove_scripts() {
 	wp_enqueue_style( 'azarashilove-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_enqueue_style( 'azarashilove-responsive', get_template_directory_uri() . '/responsive.css', array( 'azarashilove-style' ), _S_VERSION );
-	wp_style_add_data( 'azarashilove-style', 'rtl', 'replace' );
     wp_enqueue_style( 'yakuhanjp', 'https://cdn.jsdelivr.net/npm/yakuhanjp@4.0.0/dist/css/yakuhanjp.min.css', array(), null );
 }
 add_action( 'wp_enqueue_scripts', 'azarashilove_scripts' );
@@ -670,6 +668,30 @@ add_filter( 'render_block_core/post-excerpt', function( $block_content, $block )
 	);
 	return $block_content;
 }, 20, 2 );
+
+
+/**
+ * ブロックエディタのスペーサーブロックをサイト上では出力しない。
+ */
+add_filter( 'render_block_core/spacer', function( $block_content, $block ) {
+	return '';
+}, 10, 2 );
+
+add_action( 'template_redirect', function() {
+	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+		return;
+	}
+	ob_start( function( $html ) {
+		if ( false === strpos( $html, 'wp-block-spacer' ) ) {
+			return $html;
+		}
+		return preg_replace(
+			'/<div\b[^>]*class=(["\'])(?=[^"\']*\bwp-block-spacer\b)[^"\']*\1[^>]*>\s*<\/div>/i',
+			'',
+			$html
+		);
+	} );
+}, 5 );
 
 
 /**
