@@ -9,6 +9,7 @@
 !/avant-p/
 !/spacenoid/
 !/azalove/
+!/ok-berlin/
 
 ### macOS
 .DS_Store
@@ -126,12 +127,53 @@
 !/azalove/app/public/wp-content/themes/azarashilove/
 !/azalove/app/public/wp-content/themes/azarashilove/**
 
+### ok-berlin: Local by Flywheel / local environment
+/ok-berlin/conf/
+/ok-berlin/logs/
+
+### ok-berlin: WordPress core and environment files
+/ok-berlin/app/public/*
+!/ok-berlin/app/public/wp-content/
+/ok-berlin/app/public/wp-config.php
+/ok-berlin/app/public/local-*.php
+
+### ok-berlin: WordPress content generated at runtime
+/ok-berlin/app/public/wp-content/*
+/ok-berlin/app/public/wp-content/uploads/
+/ok-berlin/app/public/wp-content/upgrade/
+/ok-berlin/app/public/wp-content/upgrade-temp-backup/
+/ok-berlin/app/public/wp-content/ai1wm-backups/
+/ok-berlin/app/public/wp-content/cache/
+/ok-berlin/app/public/wp-content/wpo-cache/
+/ok-berlin/app/public/wp-content/wflogs/
+/ok-berlin/app/public/wp-content/siteguard/
+/ok-berlin/app/public/wp-content/ewww/
+/ok-berlin/app/public/wp-content/languages/
+/ok-berlin/app/public/wp-content/plugins/
+/ok-berlin/app/public/wp-content/updraft/
+/ok-berlin/app/public/wp-content/backup*/
+/ok-berlin/app/public/wp-content/backups/
+/ok-berlin/app/public/wp-content/debug.log
+/ok-berlin/app/public/wp-content/*.log
+/ok-berlin/app/public/wp-content/*.sql
+/ok-berlin/app/public/wp-content/*.wpress
+
+### ok-berlin: track only custom project code
+!/ok-berlin/app/
+!/ok-berlin/app/public/
+!/ok-berlin/app/public/wp-content/
+!/ok-berlin/app/public/wp-content/themes/
+/ok-berlin/app/public/wp-content/themes/*
+!/ok-berlin/app/public/wp-content/themes/okberlin/
+!/ok-berlin/app/public/wp-content/themes/okberlin/**
+
 ### Always ignore local/generated artifacts re-exposed by site unignore rules
 **/.DS_Store
 **/._*
 /avant-p/app/sql/
 /spacenoid/app/sql/
 /azalove/app/sql/
+/ok-berlin/app/sql/
 
 # Add more managed sites by unignoring the site directory above,
 # then adding site-specific WordPress ignore rules.
