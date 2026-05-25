@@ -31,7 +31,7 @@ Theme Name: spacenoid
   --type-heading-line-height: 1.15;
   --type-heading-letter-spacing: 0.1em;
   --type-heading-transform: uppercase;
-  --type-page-title-size: clamp(32px, 5vw, 56px);
+  --type-page-title-size: clamp(32px, 5vw, 36px);
   --type-section-title-size: clamp(26px, 4vw, 42px);
   --type-card-title-family: var(--font-serif);
   --type-card-title-size: clamp(18px, 2vw, 24px);
@@ -589,28 +589,28 @@ article {
 .type-stage .entry-content > section:nth-child(2n) {
 		background:#EFDEFD;
 }
-.page-id-528 .entry-content .box_next {
+.box_next {
 	transition:var(--transition);
-	border:1px solid #333;
+    margin-bottom: 48px;
 }
-.page-id-528 .entry-content .box_next li {
+.box_next li {
 	position:relative;
 }
-.page-id-528 .entry-content .box_next li > .is-layout-flex {
+.box_next li > .is-layout-flex {
   gap: 0;
 }
-.page-id-528 .entry-content .box_next .box_left {
+.box_next .box_left {
   padding: var(--space4);
 }
-.page-id-528 .entry-content .box_next .box_left h3 {
+.box_next .box_left h3 {
   margin-bottom: var(--space4);
   font-family: var(--font-heading-en);
 }
-.page-id-528 .entry-content .box_next .box_left time {
+.box_next .box_left time {
   font-size: var(--font-s);
   color: #666;
 }
-.page-id-528 .entry-content .box_next a {
+.box_next a {
   width: 100%;
   height: 100%;
   display: block;
@@ -621,7 +621,7 @@ article {
   background: var(--white);
   opacity: 0;
 }
-.page-id-528 .entry-content .box_next:hover {
+.box_next:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow);
   background: var(--white);
@@ -629,23 +629,17 @@ article {
 .single-event .entry-content {
   padding: var(--space8);
 }
-.member_outline {
-  margin-top: var(--space4);
+.member_table {
   gap: var(--space4);
   margin-bottom: var(--space4);
 }
-.member_outline table {
+.member_table table {
    margin-top: var(--space4);
 }
-.member_outline table td,
-.member_outline table th {
- 	border: none;
- 	line-height: 1.9;
+.member_table table td:first-child{
+  border-right: 1px solid var(--light-grey);
 }
-.member_outline table td {
- 	padding-left: 0;
- 	padding-right: var(--space4);
-}
+
 .list_record,
 .list_works {
 width: 100%;
@@ -1478,7 +1472,8 @@ header > div ul li a {
     padding: 24px 20px;
   }
 .name strong {
-    font-size: 28px;
+    font-size: 23px;
+    letter-spacing: 0;
   }
 .stage-single__header {
     padding-bottom: 24px;
@@ -1598,6 +1593,9 @@ body {
     padding: 0px;
     width: 100%;
   }
+.member_table table td:first-child{
+  border-right: none;
+}
 .flexbox.member_list {
     flex-direction: column;
   }

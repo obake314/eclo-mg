@@ -100,6 +100,51 @@ function spacenoid_sort_member_query_by_furigana($query) {
 }
 add_filter('query_loop_block_query_vars', 'spacenoid_sort_member_query_by_furigana');
 
+function spacenoid_project_excerpt_length($length) {
+    if (is_page('project') || is_page(1598)) {
+        return 10000;
+    }
+
+    return $length;
+}
+add_filter('excerpt_length', 'spacenoid_project_excerpt_length', 99);
+
+function spacenoid_project_post_excerpt_block_attrs($parsed_block) {
+    if (
+        'core/post-excerpt' !== ($parsed_block['blockName'] ?? '') ||
+        (!is_page('project') && !is_page(1598))
+    ) {
+        return $parsed_block;
+    }
+
+    if (!isset($parsed_block['attrs']) || !is_array($parsed_block['attrs'])) {
+        $parsed_block['attrs'] = array();
+    }
+
+    $parsed_block['attrs']['excerptLength'] = 10000;
+
+    return $parsed_block;
+}
+add_filter('render_block_data', 'spacenoid_project_post_excerpt_block_attrs');
+
+function spacenoid_get_page_header_label($post_id = null) {
+    $post_id = $post_id ? $post_id : get_the_ID();
+
+    if (function_exists('get_field')) {
+        $english = get_field('english', $post_id);
+        if (!empty($english)) {
+            return $english;
+        }
+    }
+
+    $slug = get_post_field('post_name', $post_id);
+    if (!empty($slug)) {
+        return strtoupper(str_replace(array('-', '_'), ' ', $slug));
+    }
+
+    return strtoupper(get_the_title($post_id));
+}
+
 function spacenoid_member_fanmail_notice() {
     ?>
     <section class="member-fanmail" aria-labelledby="member-fanmail-title">

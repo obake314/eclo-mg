@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="section_content">
-<section class="page-header" data-page-title="<?php echo esc_attr(get_the_title()); ?>">
+<section class="page-header" data-page-title="<?php echo esc_attr(function_exists('spacenoid_get_page_header_label') ? spacenoid_get_page_header_label() : get_the_title()); ?>">
 	<h1 class="page-title" data-display-title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></h1>
 </section>
 <article id="post-<?php the_ID(); ?>" <?php post_class('page-content'); ?>>

@@ -110,11 +110,14 @@
             }
 
             function setNavigation(open) {
+                document.documentElement.classList.toggle('is-nav-open', open);
                 document.body.classList.toggle('is-nav-open', open);
+                navigation.classList.toggle('is-open', open);
                 toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             }
 
-            toggle.addEventListener('click', function () {
+            toggle.addEventListener('click', function (event) {
+                event.preventDefault();
                 setNavigation(!document.body.classList.contains('is-nav-open'));
             });
 
