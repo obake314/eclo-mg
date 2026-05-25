@@ -101,6 +101,27 @@ function azarashilove_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'azarashilove_scripts' );
 
+/**
+ * global-styles-inline-css / core-block-supports-inline-css より後で
+ * テーマ CSS を確実に優先させるため、wp_footer で <style> を直接出力する。
+ * wp_footer は head 内の全スタイル出力より後に実行されるため順序が保証される。
+ */
+add_action( 'wp_footer', function () {
+	$file = get_template_directory() . '/style.css';
+	if ( ! file_exists( $file ) ) {
+		return;
+	}
+	$css = file_get_contents( $file );
+
+	// テーマヘッダーコメント (/*! ... */) を除去
+	$css = preg_replace( '/^\/\*![\s\S]*?\*\//m', '', $css );
+
+	// @import は <style> 内では無効になるため除去（フォントは <link> で読み込み済み）
+	$css = preg_replace( '/^@import\s+[^\n]+;/m', '', $css );
+
+	echo '<style id="azarashilove-theme-overrides">' . $css . '</style>';
+}, PHP_INT_MAX );
+
 // yakuhanjpを非同期化
 add_filter( 'style_loader_tag', 'azarashilove_async_yakuhanjp', 10, 2 );
 function azarashilove_async_yakuhanjp( $html, $handle ) {
@@ -767,3 +788,43 @@ add_action( 'template_redirect', function() {
 		return $output;
 	} );
 }, PHP_INT_MAX );
+
+/**
+ * SP: TOC (.link_area) を開閉式にする JS
+ */
+add_action( 'wp_footer', function () {
+	?>
+	<script>
+	(function () {
+		if (window.innerWidth > 760) return;
+		document.querySelectorAll('.link_area').forEach(function (toc) {
+			var h2 = toc.querySelector('h2');
+			var ul  = toc.querySelector('ul');
+			if (!h2 || !ul) return;
+
+			// ul を toc-body でラップ
+			var body = document.createElement('div');
+			body.className = 'toc-body';
+			ul.parentNode.insertBefore(body, ul);
+			body.appendChild(ul);
+
+			// h2 をトグルボタンに差し替え
+			var btn = document.createElement('button');
+			btn.className = 'toc-toggle-btn';
+			btn.type = 'button';
+			btn.textContent = h2.textContent;
+			btn.setAttribute('aria-expanded', 'false');
+			h2.parentNode.replaceChild(btn, h2);
+
+			// 初期状態: 折りたたむ
+			toc.classList.add('is-toc-collapsed');
+
+			btn.addEventListener('click', function () {
+				var collapsed = toc.classList.toggle('is-toc-collapsed');
+				btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+			});
+		});
+	})();
+	</script>
+	<?php
+}, 20 );

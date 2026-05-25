@@ -24,14 +24,13 @@ $custom_posts = get_posts(array(
 global $post;
 if($custom_posts): foreach($custom_posts as $post): setup_postdata($post); ?>
 <li>
+<a href="<?php the_permalink(); ?>" class="card-cover-link" aria-label="<?php the_title_attribute(); ?>"></a>
 <figure>
-<a href="<?php the_permalink(); ?>">
    <?php if (has_post_thumbnail()) : ?>
 <?php the_post_thumbnail('full'); ?>
     <?php else : ?>
 <img src="https://azarashi.love/wp-content/uploads/azarashi_noimg.jpg">
     <?php endif ; ?>
-</a>
 </figure>
 <figcaption>
 <h3><?php the_title(); ?></h3>

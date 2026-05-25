@@ -135,7 +135,7 @@ endif;
   endif;
 ?>
 </ul>
-<p class="btn"><a href="<?php echo esc_url( home_url('/') ); ?>">アザラシコラムバックナンバー</a></p>
+<p class="btn" style="margin-top:var(--space-m);text-align:center;"><a href="<?php echo esc_url( get_category_link( 551 ) ); ?>">アザラシコラム一覧へ</a></p>
 </div>
 </section>
 </main>
