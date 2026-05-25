@@ -1,0 +1,103 @@
+name: Deploy ok-berlin theme
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "ok-berlin/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ok-berlin
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      SSH_HOST: ${{ secrets.AZARASHILOVE_SSH_HOST }}
+      SSH_USER: ${{ secrets.AZARASHILOVE_SSH_USER }}
+      SSH_PASSWORD: ${{ secrets.AZARASHILOVE_SSH_PASSWORD }}
+      SSH_PORT: ${{ secrets.AZARASHILOVE_SSH_PORT || '2222' }}
+      WP_ROOT: ${{ secrets.OK_BERLIN_WP_ROOT }}
+      THEME_NAME: okberlin
+      LOCAL_THEME: ok-berlin
+      SSH_OPTS: "-o BatchMode=no -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            "SSH_HOST:AZARASHILOVE_SSH_HOST"
+            "SSH_USER:AZARASHILOVE_SSH_USER"
+            "SSH_PASSWORD:AZARASHILOVE_SSH_PASSWORD"
+            "WP_ROOT:OK_BERLIN_WP_ROOT"
+          )
+          for item in "${required[@]}"; do
+            env_name="${item%%:*}"
+            secret_name="${item##*:}"
+            if [[ -z "${!env_name}" ]]; then
+              echo "Missing required secret: $secret_name"
+              exit 1
+            fi
+          done
+
+      - name: Install deploy tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Prepare known hosts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Test SFTP connection
+        shell: bash
+        run: |
+          set -euo pipefail
+          lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          set cmd:fail-exit yes
+          set sftp:connect-program "ssh -a -x $SSH_OPTS"
+          cls -1 "$WP_ROOT/wp-content/themes" >/dev/null
+          bye
+          EOF
+
+      - name: Sync theme over SFTP
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
+          lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          set cmd:fail-exit yes
+          set sftp:connect-program "ssh -a -x $SSH_OPTS"
+          set sftp:auto-confirm yes
+          set net:max-retries 2
+          set net:timeout 20
+          mkdir -p "$remote_theme"
+          mirror -R --delete --verbose \
+            --exclude-glob .DS_Store \
+            --exclude-glob app/ \
+            --exclude-glob conf/ \
+            --exclude-glob logs/ \
+            --exclude-glob node_modules/ \
+            --exclude-glob vendor/ \
+            --exclude-glob .git/ \
+            "$LOCAL_THEME/" "$remote_theme/"
+          cls -1 "$remote_theme/style.css" >/dev/null
+          echo "Deployed $THEME_NAME theme."
+          bye
+          EOF
