@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y sshpass lftp
+          sudo apt-get install -y lftp
 
       - name: Prepare known hosts
         shell: bash
@@ -65,19 +65,16 @@ jobs:
           chmod 700 ~/.ssh
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
-      - name: Test SSH connection
+      - name: Test SFTP connection
         shell: bash
         run: |
           set -euo pipefail
-          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            "pwd && test -d '$WP_ROOT' && test -d '$WP_ROOT/wp-content/themes'"
-
-      - name: Ensure remote theme directory
-        shell: bash
-        run: |
-          set -euo pipefail
-          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            "mkdir -p '$WP_ROOT/wp-content/themes/$THEME_NAME'"
+          lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          set cmd:fail-exit yes
+          set sftp:connect-program "ssh -a -x $SSH_OPTS"
+          cls -1 "$WP_ROOT/wp-content/themes" >/dev/null
+          bye
+          EOF
 
       - name: Sync theme over SFTP
         shell: bash
@@ -85,21 +82,19 @@ jobs:
           set -euo pipefail
           remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
           lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          set cmd:fail-exit yes
+          set sftp:connect-program "ssh -a -x $SSH_OPTS"
           set sftp:auto-confirm yes
           set net:max-retries 2
           set net:timeout 20
+          mkdir -p "$remote_theme"
           mirror -R --delete --verbose \
             --exclude-glob .DS_Store \
             --exclude-glob node_modules/ \
             --exclude-glob vendor/ \
             --exclude-glob .git/ \
             "$LOCAL_THEME/" "$remote_theme/"
+          cls -1 "$remote_theme/style.css" >/dev/null
+          echo "Deployed $THEME_NAME theme."
           bye
           EOF
-
-      - name: Confirm deployment
-        shell: bash
-        run: |
-          set -euo pipefail
-          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            "test -f '$WP_ROOT/wp-content/themes/$THEME_NAME/style.css' && echo 'Deployed $THEME_NAME theme.'"
