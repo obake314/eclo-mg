@@ -18,10 +18,10 @@ jobs:
     timeout-minutes: 10
 
     env:
-      SSH_HOST: ${{ secrets.AZARASHILOVE_SSH_HOST }}
-      SSH_USER: ${{ secrets.AZARASHILOVE_SSH_USER }}
-      SSH_PASSWORD: ${{ secrets.AZARASHILOVE_SSH_PASSWORD }}
-      SSH_PORT: ${{ secrets.AZARASHILOVE_SSH_PORT || '2222' }}
+      SSH_HOST: ${{ secrets.OK_BERLIN_SSH_HOST }}
+      SSH_USER: ${{ secrets.OK_BERLIN_SSH_USER }}
+      SSH_PASSWORD: ${{ secrets.OK_BERLIN_SSH_PASSWORD }}
+      SSH_PORT: ${{ secrets.OK_BERLIN_SSH_PORT || '2222' }}
       WP_ROOT: ${{ secrets.OK_BERLIN_WP_ROOT }}
       THEME_NAME: okberlin
       LOCAL_THEME: ok-berlin
@@ -36,9 +36,9 @@ jobs:
         run: |
           set -euo pipefail
           required=(
-            "SSH_HOST:AZARASHILOVE_SSH_HOST"
-            "SSH_USER:AZARASHILOVE_SSH_USER"
-            "SSH_PASSWORD:AZARASHILOVE_SSH_PASSWORD"
+            "SSH_HOST:OK_BERLIN_SSH_HOST"
+            "SSH_USER:OK_BERLIN_SSH_USER"
+            "SSH_PASSWORD:OK_BERLIN_SSH_PASSWORD"
             "WP_ROOT:OK_BERLIN_WP_ROOT"
           )
           for item in "${required[@]}"; do
