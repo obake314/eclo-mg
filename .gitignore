@@ -10,6 +10,7 @@
 !/spacenoid/
 !/azalove/
 !/ok-berlin/
+!/okberlin/
 
 ### macOS
 .DS_Store
@@ -118,14 +119,7 @@
 /azalove/app/public/wp-content/*.sql
 /azalove/app/public/wp-content/*.wpress
 
-### azalove: track only custom project code
-!/azalove/app/
-!/azalove/app/public/
-!/azalove/app/public/wp-content/
-!/azalove/app/public/wp-content/themes/
-/azalove/app/public/wp-content/themes/*
-!/azalove/app/public/wp-content/themes/azarashilove/
-!/azalove/app/public/wp-content/themes/azarashilove/**
+### azalove: theme files are tracked at /azalove
 
 ### ok-berlin: Local by Flywheel / local environment
 /ok-berlin/conf/
@@ -158,14 +152,7 @@
 /ok-berlin/app/public/wp-content/*.sql
 /ok-berlin/app/public/wp-content/*.wpress
 
-### ok-berlin: track only custom project code
-!/ok-berlin/app/
-!/ok-berlin/app/public/
-!/ok-berlin/app/public/wp-content/
-!/ok-berlin/app/public/wp-content/themes/
-/ok-berlin/app/public/wp-content/themes/*
-!/ok-berlin/app/public/wp-content/themes/okberlin/
-!/ok-berlin/app/public/wp-content/themes/okberlin/**
+### okberlin: theme files are tracked at /okberlin
 
 ### Always ignore local/generated artifacts re-exposed by site unignore rules
 **/.DS_Store

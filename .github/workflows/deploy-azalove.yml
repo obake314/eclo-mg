@@ -1,15 +1,15 @@
-name: Deploy azarashilove theme
+name: Deploy azalove theme
 
 on:
   push:
     branches:
       - main
     paths:
-      - "azalove/app/public/wp-content/themes/azarashilove/**"
+      - "azalove/**"
   workflow_dispatch:
 
 concurrency:
-  group: deploy-azarashilove
+  group: deploy-azalove
   cancel-in-progress: true
 
 jobs:
@@ -23,8 +23,8 @@ jobs:
       SSH_PASSWORD: ${{ secrets.AZARASHILOVE_SSH_PASSWORD }}
       SSH_PORT: ${{ secrets.AZARASHILOVE_SSH_PORT || '2222' }}
       WP_ROOT: ${{ secrets.AZARASHILOVE_WP_ROOT }}
-      THEME_NAME: azarashilove
-      LOCAL_THEME: azalove/app/public/wp-content/themes/azarashilove
+      THEME_NAME: azalove
+      LOCAL_THEME: azalove
       SSH_OPTS: "-o BatchMode=no -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
 
     steps:
