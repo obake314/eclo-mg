@@ -2545,4 +2545,92 @@ header > .site-navigation ul.sub-menu li a {
   padding: 9px 0;
   font-size: 13px;
 }
+header > .site-navigation li:hover > ul.sub-menu,
+header > .site-navigation li:focus-within > ul.sub-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+}
+
+@media screen and (max-width: 680px) {
+.list_member .wp-block-columns > .wp-block-column:not(.value_photo) {
+  position: relative;
+  z-index: 6;
+  min-height: 104px;
+  padding: 16px 16px 18px;
+  background: #fff;
+}
+.list_member .wp-block-post-title,
+.list_member .wp-block-post-title a,
+.list_member .valu_role {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+.list_member .wp-block-post-title {
+  margin-bottom: 8px;
+  color: #202124;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.list_member .wp-block-post-title a {
+  color: inherit;
+}
+.list_member .valu_role {
+  color: rgba(32, 33, 36, 0.7);
+  line-height: 1.45;
+}
+.member_wrapper,
+#content-wrapper.member_wrapper {
+  width: calc(100vw - 40px);
+  max-width: calc(100vw - 40px) !important;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: visible;
+}
+.member_wrapper > .flexbox {
+  gap: 20px;
+}
+.member_wrapper .leftbox,
+.member_wrapper .rightbox,
+.member_wrapper .profile_photo,
+.member_wrapper .entry-content,
+.member_wrapper .pf_list_wrap,
+.member_wrapper .pf_list,
+.member_wrapper .img_box {
+  max-width: 100%;
+  min-width: 0;
+}
+.member_wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+.member_wrapper .profile_photo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.member_wrapper .wp-block-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+.member_wrapper .wp-block-button {
+  margin: 0;
+}
+.member_wrapper .wp-block-button__link,
+.member_wrapper a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: 100%;
+  min-height: 44px;
+  margin: 0;
+  white-space: normal;
+  line-height: 1.4;
+}
 }

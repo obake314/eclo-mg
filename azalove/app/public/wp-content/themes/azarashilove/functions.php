@@ -13,6 +13,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 
 add_theme_support( 'wp-block-styles' );
 add_theme_support( 'enable-layout-styles' );
+add_theme_support( 'block-template-parts' );
 
 /**
  * Theme Setup
@@ -119,6 +120,7 @@ function azarashilove_async_yakuhanjp( $html, $handle ) {
 require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/block-patterns.php';
 require get_template_directory() . '/inc/customizer.php';
 
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -484,6 +486,15 @@ add_filter('post_class', function ($classes, $class, $post_id) {
 	if (has_term('has_report', 'reported', $post_id)) {
 		$classes[] = 'is-has-report';
 	}
+
+	$location = function_exists( 'get_field' ) ? get_field( 'azarashi_location', $post_id ) : array();
+	foreach ( (array) $location as $item ) {
+		$value = is_array( $item ) ? ( $item['value'] ?? $item['label'] ?? '' ) : $item;
+		if ( $value ) {
+			$classes[] = sanitize_html_class( $value );
+		}
+	}
+
 	return $classes;
 }, 10, 3);
 
