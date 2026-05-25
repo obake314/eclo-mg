@@ -19,15 +19,15 @@ get_header();
 		the_field( 'areaimg', $term );
 	}
 	?>);">
-		<h2 class="title-section">
-		<?php single_term_title(); ?>
-		<span><?php
+		<div class="title-section">
+		<p><?php single_term_title(); ?></p>
+		<h2><?php
 		$term = get_queried_object();
 		if( get_field( 'areajapanese', $term ) ){
 			the_field( 'areajapanese', $term );
 		}
-		?></span>
-		</h2>
+		?></h2>
+		</div>
 	</div>
 <?php if(category_description()):?>
 <div class="category_description">

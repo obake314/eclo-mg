@@ -19,15 +19,15 @@ if( get_field( 'facilitygenreimg', $term ) ){
 	the_field( 'facilitygenreimg', $term );
 }
 ?>);">
-<h1 class="title-section">
-<?php
+<div class="title-section">
+<p><?php
 $term = get_queried_object();
 if( get_field( 'facilitygenredeutsu', $term ) ){
 	the_field( 'facilitygenredeutsu', $term );
 }
-?>
-<span><?php single_term_title(); ?></span>
-</h1>
+?></p>
+<h2><?php single_term_title(); ?></h2>
+</div>
 </div>
 <ul class="flexbox list_facility">
 <?php

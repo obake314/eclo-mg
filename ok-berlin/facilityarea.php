@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <svg version="1.1"
 	 id="svg2" x="0px" y="0px" viewBox="0 0 1310.9 1084.8"
 	 style="enable-background:new 0 0 1310.9 1084.8;" xml:space="preserve">
@@ -494,3 +495,4 @@
 <li><a href="https://ok-berlin.life/archives/prefectures/treptow">Treptow-Köpenick</a></li>
 <li><a href="https://ok-berlin.life/archives/prefectures/other">Other</a></li>
 </ul>
+<?php echo str_replace( 'https://ok-berlin.life', untrailingslashit( home_url() ), ob_get_clean() ); ?>

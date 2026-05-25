@@ -19,15 +19,15 @@ get_header();
 		the_field( 'tradeareaimg', $term );
 	}
 	?>);">
-	<h1 class="title-section">
-	<?php single_term_title(); ?>
-	<span><?php
+	<div class="title-section">
+	<p><?php single_term_title(); ?></p>
+	<h2><?php
 	$term = get_queried_object();
 	if( get_field( 'tradeareajapanese', $term ) ){
 		the_field( 'tradeareajapanese', $term );
 	}
-	?></span>
-	</h1>
+	?></h2>
+	</div>
 	</div>
 <ul class="flexbox list_facility">
 <?php

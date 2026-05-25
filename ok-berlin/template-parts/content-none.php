@@ -42,7 +42,7 @@
 		endif;
 		?>
 		<div class="trade_search flexbox">
-<h3 class="title-section">Suche<span>取引検索</span></h3><form role="search" method="get" id="searchform" class="searchform" action="https://ok-berlin.life/">
+<div class="title-section"><p>Suche</p><h2>取引検索</h2></div><form role="search" method="get" id="searchform" class="searchform" action="https://ok-berlin.life/">
 		<label class="screen-reader-text" for="s"></label>
 		<input type="text" value="" name="s" id="s">
 		<input type="submit" id="searchsubmit" value=" 検索">

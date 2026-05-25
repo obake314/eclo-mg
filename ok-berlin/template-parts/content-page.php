@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-	<h1 class="entry-title"><span><?php the_field("headline_label"); ?></span><?php the_title(); ?></h1>
+	<div class="entry-title"><p><?php the_field("headline_label"); ?></p><h1><?php the_title(); ?></h1></div>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php

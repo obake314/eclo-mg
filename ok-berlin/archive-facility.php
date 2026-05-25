@@ -16,7 +16,7 @@ get_header();
 
 
 <div class="page-title">
-	<h1 class="title-section">Einrichtungen<span>スポット情報</span></h1>
+	<div class="title-section"><p>Einrichtungen</p><h2>スポット情報</h2></div>
 </div>
 <div class="facility-top">
 <?php echo do_shortcode('[myphp04 file="facilityarea"]'); ?>
@@ -33,25 +33,21 @@ $custom_posts = okberlin_get_posts(array(
 global $post;
 if($custom_posts): foreach($custom_posts as $post): setup_postdata($post); ?>
 <li>
+<a class="facility-card-link" href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>"></a>
 <figure>
-<a href="<?php the_permalink(); ?>">
-   <?php if (has_post_thumbnail()) : ?>
-<?php
+<?php if (has_post_thumbnail()) :
   $post_title = get_the_title();
-  the_post_thumbnail('full',array('alt' => $post_title,));
-?>
-    <?php else : ?>
+  the_post_thumbnail('full', array('alt' => $post_title));
+else : ?>
 <img src="https://ok-berlin.life/wp-content/uploads/berlin_noimg.jpg" alt="ベルリン施設画像">
-    <?php endif ; ?>
-</a>
+<?php endif; ?>
 </figure>
 <figcaption>
 <h3><?php the_field('post_title_deutsu'); ?><span><?php the_title(); ?></span></h3>
 <address><?php echo get_the_term_list($post->ID, 'prefectures'); ?></address>
 <ul class="list_facility_genre">
-<?php echo get_the_term_list($post->ID,'genre'); ?>
+<?php echo get_the_term_list($post->ID, 'genre'); ?>
 </ul>
-<p><?php echo mb_substr(get_the_excerpt(), 0, 200); ?></p>
 </figcaption>
 </li>
 <?php endforeach; wp_reset_postdata(); endif; ?>

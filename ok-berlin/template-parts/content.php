@@ -12,10 +12,15 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
+		$en = function_exists( 'get_field' ) ? get_field( 'headline_label' ) : '';
+		if ( ! $en ) {
+			$cats = get_the_category();
+			$en   = $cats ? esc_html( $cats[0]->name ) : '';
+		}
 		if ( is_singular() ) :
-			the_title( '<h2 class="entry-title">', '</h2>' );
+			echo '<div class="entry-title"><p>' . esc_html( $en ) . '</p><h1>' . get_the_title() . '</h1></div>';
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			echo '<div class="entry-title"><p>' . esc_html( $en ) . '</p><h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . get_the_title() . '</a></h2></div>';
 		endif;
 
 		if ( 'post' === get_post_type() ) :

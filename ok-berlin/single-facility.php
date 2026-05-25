@@ -61,7 +61,7 @@ get_header();
 	</div><!-- .entry-content -->
 <?php if(get_field('instagramfeed')): ?>
 <div class="area_instagram">
-<h2 class="title-section">Intagram<span>最新のハッシュタグフィード</span></h2>
+<div class="title-section"><p>Intagram</p><h2>最新のハッシュタグフィード</h2></div>
 <?php the_field('instagramfeed'); ?>
 </div>
 <?php endif; ?>

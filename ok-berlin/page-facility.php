@@ -8,7 +8,7 @@ get_header();
 <main id="primary" class="site-main">
 <div class="wrap">
 <header class="entry-header">
-	<h1 class="entry-title"><span>CLIENTS</span>参画実績</h1>
+	<div class="entry-title"><p>CLIENTS</p><h1>参画実績</h1></div>
 </header>
 <section class="sec_works">
 <ul class="flexbox list_works">

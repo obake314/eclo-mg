@@ -13,14 +13,10 @@ get_header();
 <div class="flexbox wrap">
 <div class="main_left">
 	<div class="page-title">
-	<h1 class="title-section">
-		Suchergebnisse
-	<span>
-	<?php
-			printf( esc_html__( '検索結果 %s', 'okberlin' ), '' . get_search_query() . '' );
-		?>
-		</span>
-	</h1>
+	<div class="title-section">
+	<p>Suchergebnisse</p>
+	<h2><?php printf( esc_html__( '検索結果 %s', 'okberlin' ), '' . get_search_query() . '' ); ?></h2>
+	</div>
 	</div>
 	<ul class="list_post">
             <?php 

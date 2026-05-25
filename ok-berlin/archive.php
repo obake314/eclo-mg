@@ -20,7 +20,7 @@ get_header();
 		  $cat_name = $category[0]->cat_name;
 		  $cat_slug = $category[0]->category_nicename;
 		?>
-		<h1 class="title-section"><?php echo $cat_slug; ?><span>ベルリン<?php the_archive_title(); ?></span></h1>
+		<div class="title-section"><p><?php echo $cat_slug; ?></p><h2>ベルリン<?php the_archive_title(); ?></h2></div>
 		</div>
 <ul class="list_post">
 			
@@ -51,7 +51,6 @@ if($cat_posts): foreach($cat_posts as $post): setup_postdata($post); ?>
 							<figcaption>
 								<h3><?php the_title(); ?></h3>
 								<p class="post_meta"><time><?php the_time('d.m.Y') ?></time></p>
-								<div class="content"><?php the_excerpt(); ?></div>
 							</figcaption>
 								</a>					
 						</li>

@@ -15,7 +15,7 @@ get_header();
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
-			the_title( '<h2 class="entry-title">', '</h2>' );
+			echo '<div class="entry-title"><p>Interview</p><h1>' . get_the_title() . '</h1></div>';
 			?>
 			<div class="entry-meta interview-meta">
 				INTERVIEW<?php the_field('interview_number'); ?> - <span><?php the_field('interview_name'); ?></span>
@@ -29,8 +29,8 @@ get_header();
 		?>
 	</div><!-- .entry-content -->
 <section class="sec_news_pickup area_interview">
-<h2 class="title-section">Interview<span>ベルリン在住者インタビュー</span></h2>
-<ul class="list_post_pickup flexbox">
+<div class="title-section"><p>Interview</p><h2>ベルリン在住者インタビュー</h2></div>
+<ul class="list_post_pickup">
 <?php
 $cat_posts = okberlin_get_posts(array(
     'post_type'      => 'interview',

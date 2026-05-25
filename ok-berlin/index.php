@@ -13,6 +13,7 @@
  */
 
 get_header();
+wp_enqueue_script( 'okberlin-home', get_template_directory_uri() . '/js/home.js', array(), null, true );
 ?>
 
 <section class="sec_vis">
@@ -23,12 +24,10 @@ get_header();
 ベルリン生活をちょっと便利にできたら、あるいは、ドイツへの渡航をちょっとでも楽しみになってもらえたらうれしいです。</p>
 <div class="area_today flexbox">
 	<div class="left">
-	<script><!--
-	var currency_rate_list=new Array("EUR","JPY");
-	var currency_template="<p>現在の1 $from_abbrev</p><div><b>$rate</b>$to_abbrev</div>";
-	var currency_round=true;
-	//--></script>
-	<script src="https://ja.coinmill.com/frame.js"></script>
+	<div class="currency-wrap">
+	<p>現在の1 EUR</p>
+	<div><b id="js-eur-jpy">--</b> JPY</div>
+	</div>
 	</div>
 	<div class="right">
 	<?php echo do_shortcode('[shortcode-weather-atlas city_selector=50 background_color="rgba(0,0,0,0)" unit_c_f="c" style="border:0;text-shadow:none;" text_color="#222222" layout="horizontal" daily=0 sunrise_sunset=0 hourly=0 current=0]'); ?>
@@ -37,14 +36,14 @@ get_header();
 
 <div class="box_time">
 <div class="box_time_left">
-<h2>BERLIN TIME</h2>
+<h2>BERLIN</h2>
 <?php
 date_default_timezone_set('Europe/Berlin');
 $germany_time = date('Y.m.d H:i');
 echo "<time>{$germany_time}</time>"; ?>
 </div>
 <div class="box_time_right">
-<h2>TOKYO TIME</h2>
+<h2>TOKYO</h2>
 <?php
 date_default_timezone_set('Asia/Tokyo');
 $japan_time = date('Y.m.d H:i'); 
@@ -62,8 +61,8 @@ echo "<time>{$japan_time}</time>"; ?>
 </div>
 </section>
 <section class="sec_news_pickup">
-<h2 class="title-section">Themen<span>ベルリン生活コラムおすすめ記事</span></h2>
-<ul class="list_post_pickup flexbox">
+<div class="title-section"><p>Themen</p><h2>ベルリン生活コラムおすすめ記事</h2></div>
+<ul class="list_post_pickup">
 <?php
 $cat_posts = okberlin_get_posts(array(
     'post_type'      => 'post',
@@ -88,8 +87,8 @@ if($cat_posts): foreach($cat_posts as $post): setup_postdata($post); ?>
 </ul>
 </section>
 <section class="sec_news_pickup area_interview">
-<h2 class="title-section">Interview<span>ベルリン在住者インタビュー</span></h2>
-<ul class="list_post_pickup flexbox">
+<div class="title-section"><p>Interview</p><h2>ベルリン在住者インタビュー</h2></div>
+<ul class="list_post_pickup">
 <?php
 $cat_posts = okberlin_get_posts(array(
     'post_type'      => 'interview',
@@ -117,7 +116,7 @@ if($cat_posts): foreach($cat_posts as $post): setup_postdata($post); ?>
 <section class="sec_news">
 <div class="wrap flexbox">
 <div class="rightbox">
-<h2 class="title-section">Transaktion<span>ベルリン生活掲示板 最新投稿</span></h2>
+<div class="title-section"><p>Transaktion</p><h2>ベルリン生活掲示板 最新投稿</h2></div>
 <?php
 include_once( ABSPATH . WPINC . '/feed.php' );
 $rss = fetch_feed( 'https://ok-berlin.life/tradeboard/index.php?a=8' ); // ここにURLを入力する
@@ -145,7 +144,7 @@ foreach ( $rss_items as $item ) : ?>
 <p class="btn"><a href="https://ok-berlin.life/tradeboard/">ベルリン生活掲示板</a></p>
 </div>
 <div class="leftbox">
-<h2 class="title-section">Neue Artikel<span>ベルリン生活コラム 最新記事</span></h2>
+<div class="title-section"><p>Neue Artikel</p><h2>ベルリン生活コラム 最新記事</h2></div>
 <ul class="list_news_recent">
 <?php
 $cat_posts = okberlin_get_posts(array(
@@ -183,7 +182,7 @@ if($cat_posts): foreach($cat_posts as $post): setup_postdata($post); ?>
 <figcaption><h2>ベルリン生活掲示板</h2><p>物件情報、不用品シェア、告知などの取引のための掲示板です。</p></figcaption></a></li>
 </ul>
 </div>
-<div class="spot_box flexbox">
+<div class="spot_box">
 <div class="leftbox">
 <h3>ドイツ基本情報</h3>
 <ul>
@@ -234,17 +233,17 @@ if($cat_posts): foreach($cat_posts as $post): setup_postdata($post); ?>
 </section>
 
 
-<section class="sec_news sec_news02" id="js-trigger">
+<section class="sec_about-us">
 <div class="wrap flexbox">
 <div class="rightbox pc_only">
 <img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/tram.jpg" alt="ベルリンのトラム">
 </div>
 <div class="leftbox">
-<h2 class="title-section">Uber uns<span>OK!ベルリンとは</span></h2>
+<div class="title-section"><p>Uber uns</p><h2>OK!ベルリンとは</h2></div>
 <p>OK！BERLINはベルリンの日本人在住者、日本からベルリンへの渡航を検討中の方へのお役立ち情報を掲載するサイトです。ベルリン生活がより便利になっていけたら、あるいは、ドイツの環境の中でさまざまな活動をする日本人のことを紹介できたらと思い運用しています。皆様とベルリンのいい出会いがあったらうれしいです。</p>
-<h2 class="title-section">Nachricht<span>OK!ベルリンからのお知らせ</span></h2>
+<div class="title-section"><p>Nachricht</p><h2>OK!ベルリンからのお知らせ</h2></div>
 <p>2022年6月　ベルリン在住者のインタビュー記事の公開を開始しました！</p>
-<h2 class="title-section">Rekrutierung<span>OK!ベルリン スタッフ募集</span></h2>
+<div class="title-section"><p>Rekrutierung</p><h2>OK!ベルリン スタッフ募集</h2></div>
 <p>OK!BERLINは、ベルリンの街を取材してレポートするスタッフを募集しています。ライター以外にも企画やサイト開発、その他の業務を協力していただける方がいらっしゃいましたら、是非ご連絡ください。面談の機会を設定させていただけたらと思います。学歴不問/未経験者歓迎/報酬は業務内容によって応相談とさせてください。</p>
 <p class="btn"><a href="<?php echo esc_url( home_url( '/' ) ); ?>archives/category/column">コラム一覧へ</a>　<a target="_blank" href="https://twitter.com/OKBerlin_"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.262 5.632 5.901-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Twitter</a>　<a href="https://ok-berlin.life/contact">お問い合わせ</a></p>
 </div>

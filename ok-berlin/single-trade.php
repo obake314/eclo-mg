@@ -15,7 +15,7 @@ get_header();
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <div class="flexbox trade-post-header">
 <figcaption>
-<?php the_title( '<h2 class="entry-title">', '</h2>' );?>	
+<div class="entry-title"><p>Trade</p><h2><?php the_title(); ?></h2></div>
 <time><small><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></small><?php echo get_the_date('j.n.Y'); ?></time>
 <div><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><?php echo get_the_term_list($post->ID, 'trade_genre'); ?></div>
 <p><small><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></small><?php echo get_the_term_list($post->ID, 'trade_area'); ?></p>
@@ -41,7 +41,7 @@ get_header();
 </figure>
 <figcaption>
 <small>投稿ID:<?php the_ID(); ?></small>
-<?php the_title( '<h2 class="entry-title">', '</h2>' );?>	
+<h2 class="entry-title"><?php the_title(); ?></h2>
 <p class="trade_spot"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><?php echo get_the_term_list($post->ID, 'trade_area'); ?></p>
 <p class="">€<?php the_field('price'); ?></p>
 </figcaption>
@@ -63,11 +63,11 @@ echo get_the_author_meta('user_login',$ID);//　ユーザー名
 	<?php echo do_shortcode('[myphp06 file="trade_register"]'); ?>
 
 	<div class="entry-footer">
-	<h2 class="title-section title-section-center">Kategorie<span>取引カテゴリー</span></h2>
+	<div class="title-section title-section-center"><p>Kategorie</p><h2>取引カテゴリー</h2></div>
 		<?php echo do_shortcode('[myphp file="tradecategory"]'); ?>
 	</div><!-- .entry-footer -->
 		<div class="entry-footer">
-	<h2 class="title-section title-section-center">Bereich<span>取引エリア</span></h2>
+	<div class="title-section title-section-center"><p>Bereich</p><h2>取引エリア</h2></div>
 		<?php echo do_shortcode('[myphp02 file="tradearea"]'); ?>
 	</div><!-- .entry-footer -->
 </article>

@@ -19,15 +19,15 @@ if( get_field( 'tradegenreimg', $term ) ){
 	the_field( 'tradegenreimg', $term );
 }
 ?>);">
-<h1 class="title-section">
-<?php
+<div class="title-section">
+<p><?php
 $term = get_queried_object();
 if( get_field( 'tradegenredeutsu', $term ) ){
 	the_field( 'tradegenredeutsu', $term );
 }
-?>
-<span><?php single_term_title(); ?></span>
-</h1>
+?></p>
+<h2><?php single_term_title(); ?></h2>
+</div>
 </div>
 <ul class="flexbox list_facility">
 <?php

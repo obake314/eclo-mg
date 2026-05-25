@@ -11,19 +11,19 @@
 
 <aside id="secondary" class="widget-area">
 <div class="trade_search flexbox">
-<h3 class="title-section">Suche<span>OK!ベルリン サイト内検索</span></h3><?php get_search_form() ?>
+<div class="title-section"><p>Suche</p><h2>OK!ベルリン サイト内検索</h2></div><?php get_search_form() ?>
 </div>
 <div class="area_widget group_facility">
-	<h2 class="title-section title-section-center">Kategorie<span>ベルリン施設 カテゴリ別検索</span></h2>
+	<div class="title-section title-section-center"><p>Kategorie</p><h2>ベルリン施設 カテゴリ</h2></div>
 		<?php echo do_shortcode('[myphp03 file="facilitycategory"]'); ?>
 	</div>
 <div class="area_widget group_facility">
-<h2 class="title-section title-section-center">Bereich<span>ベルリン施設 エリア別検索</span></h2>
+<div class="title-section title-section-center"><p>Bereich</p><h2>ベルリン施設 エリア別検索</h2></div>
 <?php echo do_shortcode('[myphp04 file="facilityarea"]'); ?>
 </div>
 
 <div class="area_widget">
-<h2 class="title-section">Transaktion<span>ベルリン生活掲示板</span></h2>
+<div class="title-section"><p>Transaktion</p><h2>ベルリン生活掲示板</h2></div>
 <?php
 include_once( ABSPATH . WPINC . '/feed.php' );
 $rss = fetch_feed( 'https://ok-berlin.life/tradeboard/index.php?a=8' ); // ここにURLを入力する
@@ -54,8 +54,8 @@ foreach ( $rss_items as $item ) : ?>
 
 
 
-<div class="area_widget">
-<h2 class="title-section">Artikel<span>ベルリン生活コラム</span></h2>
+<div class="area_widget area_recent_posts">
+<div class="title-section"><p>Artikel</p><h2>ベルリン生活コラム</h2></div>
 <ul class="list_news_recent">
 <?php
 $cat_posts = okberlin_get_posts(array(
@@ -67,7 +67,13 @@ $cat_posts = okberlin_get_posts(array(
 global $post;
 if($cat_posts): foreach($cat_posts as $post): setup_postdata($post); ?>
   <li>
-    <a href="<?php the_permalink(); ?>"><time><?php echo get_the_date(); ?></time><h3><?php the_title(); ?></h3></a>
+    <a href="<?php the_permalink(); ?>">
+      <figure><?php the_post_thumbnail( 'thumbnail' ); ?></figure>
+      <figcaption>
+        <time><?php echo esc_html( get_the_date() ); ?></time>
+        <h3><?php the_title(); ?></h3>
+      </figcaption>
+    </a>
   </li>
 <?php endforeach; endif; wp_reset_postdata(); ?>
 </ul>
