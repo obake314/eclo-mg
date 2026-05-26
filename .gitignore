@@ -151,7 +151,14 @@
 /ok-berlin/app/public/wp-content/*.sql
 /ok-berlin/app/public/wp-content/*.wpress
 
-### ok-berlin: theme files are tracked at /ok-berlin
+### ok-berlin: track only custom project code
+!/ok-berlin/app/
+!/ok-berlin/app/public/
+!/ok-berlin/app/public/wp-content/
+!/ok-berlin/app/public/wp-content/themes/
+/ok-berlin/app/public/wp-content/themes/*
+!/ok-berlin/app/public/wp-content/themes/okberlin/
+!/ok-berlin/app/public/wp-content/themes/okberlin/**
 
 ### Always ignore local/generated artifacts re-exposed by site unignore rules
 **/.DS_Store

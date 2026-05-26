@@ -15,6 +15,8 @@
 
 - `avant-p/`
 - `spacenoid/`
+- `azalove/`
+- `ok-berlin/`
 
 ## ディレクトリ構成
 
@@ -25,6 +27,8 @@ Local Sites/
     README.md
   spacenoid/
     app/public/wp-content/themes/spacenoid/
+  ok-berlin/
+    app/public/wp-content/themes/okberlin/
   admin/        # eclo-mg 管理対象外
   capital/      # eclo-mg 管理対象外
   ...
