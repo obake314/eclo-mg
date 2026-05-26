@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y lftp
+          sudo apt-get install -y lftp sshpass
 
       - name: Prepare known hosts
         shell: bash
@@ -80,27 +80,26 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          test -f "$LOCAL_THEME/style.css"
+
+          remote_parent="$WP_ROOT/wp-content/themes"
           remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
 
-          if ! lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          sshpass -p "$SSH_PASSWORD" ssh $SSH_OPTS -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "mkdir -p '$remote_theme'" || {
+              echo "Failed to create remote theme directory: $remote_theme"
+              echo "Check OK_BERLIN_WP_ROOT and that $SSH_USER can write to: $remote_parent"
+              lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
           set cmd:fail-exit yes
           set sftp:connect-program "ssh -a -x $SSH_OPTS"
           set net:max-retries 2
           set net:timeout 20
-          cls -1 "$remote_theme" >/dev/null
+          pwd
+          cls -la "$remote_parent"
           bye
           EOF
-          then
-            lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
-          set cmd:fail-exit yes
-          set sftp:connect-program "ssh -a -x $SSH_OPTS"
-          set sftp:auto-confirm yes
-          set net:max-retries 2
-          set net:timeout 20
-          mkdir "$remote_theme"
-          bye
-          EOF
-          fi
+              exit 1
+            }
 
           lftp -u "$SSH_USER","$SSH_PASSWORD" -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
           set cmd:fail-exit yes

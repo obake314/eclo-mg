@@ -2968,8 +2968,394 @@ aside .list_contents_trade li a figcaption h2 {
 		gap: 20px;
 		padding: 20px;
 	}
+
 	.sec_about-us .wp-block-column.rightbox {
 		display: none;
 	}
 }
+
+/* ------------------------------------------------------------------ */
+/* Responsive hardening                                                */
+/* ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+img,
+picture,
+svg,
+video,
+iframe {
+	max-width: 100%;
+}
+
+img,
+video {
+	height: auto;
+}
+
+.wrap,
+.sec_contents .wrap,
+.list_post_pickup,
+.sec_news_pickup .title-section {
+	width: min(100% - 40px, 1200px);
+	max-width: 1200px;
+}
+
+.site-header {
+	gap: 24px;
+}
+
+.site-header .wp-block-navigation {
+	min-width: 0;
+}
+
+.site-header .wp-block-navigation__container {
+	gap: clamp(12px, 2vw, 28px);
+}
+
+.site-main .wrap {
+	align-items: flex-start;
+	gap: 50px;
+}
+
+.site-main .wrap .main_left {
+	flex: 1 1 0;
+	min-width: 0;
+	width: auto;
+}
+
+.wrap aside {
+	flex: 0 0 350px;
+	margin-left: 0;
+}
+
+.sec_vis .wrap,
+.sec_news .wrap,
+.sec_contents .wrap,
+.sec_about .wrap {
+	gap: 50px;
+}
+
+.sec_vis_left {
+	flex: 0 1 35%;
+	min-width: 280px;
+}
+
+.sec_vis_right {
+	flex: 1 1 0;
+	min-width: 0;
+	width: auto;
+	max-width: 750px;
+	height: auto;
+}
+
+.sec_vis .slider img {
+	height: clamp(280px, 40vw, 480px);
+}
+
+.list_post_pickup {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.list_contents_trade,
+.sec_contents .list_contents_trade {
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.sec_contents .list_contents {
+	gap: 20px;
+}
+
+.sec_contents .list_contents li {
+	flex: 1 1 calc((100% - 40px) / 3);
+	min-width: 220px;
+}
+
+.table_content,
+.entry-content table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1180px) {
+	.wrap,
+	.sec_contents .wrap,
+	.list_post_pickup,
+	.sec_news_pickup .title-section {
+		width: min(100% - 32px, 1200px);
+	}
+
+	.sec_vis .wrap {
+		align-items: stretch;
+	}
+
+	.sec_vis_left {
+		flex-basis: 38%;
+	}
+
+	.list_post_pickup {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.spot_box {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		max-width: min(100% - 32px, 1200px);
+	}
+
+	.sec_about-us .rightbox,
+	.sec_about-us .leftbox {
+		width: auto;
+	}
+}
+
+@media (max-width: 960px) {
+	.site-main .wrap {
+		flex-direction: column;
+		gap: 36px;
+	}
+
+	.site-main .wrap .main_left,
+	.wrap aside,
+	.site-main .wrap .main_full {
+		flex: 0 1 auto;
+		width: 100%;
+	}
+
+	.wrap aside {
+		margin-top: 0;
+	}
+
+	.sec_vis .wrap,
+	.sec_news .wrap,
+	.sec_contents .wrap,
+	.sec_about .wrap,
+	.trade_info,
+	.trade-post-header,
+	.facility-post-header {
+		flex-direction: column;
+	}
+
+	.sec_vis_left,
+	.sec_vis_right,
+	.sec_news .leftbox,
+	.sec_news .rightbox,
+	.sec_contents_left,
+	.sec_contents_right,
+	.trade_info .product_info,
+	.trade_info .user_info,
+	.trade-post-header figure,
+	.trade-post-header figcaption,
+	.facility-post-header figure,
+	.facility-post-header figcaption,
+	.sec_about figure,
+	.sec_about figcaption {
+		width: 100%;
+		max-width: none;
+	}
+
+	.sec_contents_left {
+		padding-left: 0;
+	}
+
+	.sec_contents_right figcaption {
+		width: 100%;
+		margin: 24px 0 0;
+	}
+
+	.trade_info .user_info {
+		border-left: 0;
+		border-top: 1px solid #aaa;
+		padding: 20px 0 0;
+	}
+
+	.list_facility>li {
+		width: calc((100% - 20px) / 2);
+	}
+}
+
+@media (max-width: 768px) {
+	.wrap,
+	.sec_contents .wrap,
+	.list_post_pickup,
+	.sec_news_pickup .title-section {
+		width: 100%;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.site-header {
+		padding: 16px 20px;
+	}
+
+	.site-header .wp-block-site-logo img {
+		max-width: 130px;
+		height: auto;
+	}
+
+	.wp-block-navigation__responsive-container.is-menu-open {
+		padding: 24px;
+	}
+
+	.sec_vis_right {
+		height: auto;
+	}
+
+	.sec_vis .slider img {
+		height: 250px;
+	}
+
+	.area_today,
+	.box_time_left,
+	.box_time_right {
+		gap: 12px;
+	}
+
+	.box_time_left,
+	.box_time_right {
+		justify-content: space-between;
+	}
+
+	.box_time_right time,
+	.box_time_left time,
+	.box_time_left input,
+	.box_time_right input {
+		margin-left: 0;
+		font-size: 20px;
+	}
+
+	.list_post_pickup {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.list_post_pickup li {
+		margin-bottom: 0;
+	}
+
+	.list_post_pickup li picture img,
+	.list_post_pickup .wp-block-post-featured-image img {
+		height: 140px;
+	}
+
+	.list_tradearea {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.sec_contents .list_contents li {
+		flex-basis: 100%;
+		min-width: 0;
+	}
+
+	.search .wrap .main_left .trade_search form,
+	.sec_contents_right .trade_search form,
+	aside .trade_search form {
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.search .wrap .main_left .trade_search form input[type="text"],
+	.sec_contents_right .trade_search form input[type="text"],
+	aside .trade_search form input[type="text"] {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	.search .wrap .main_left .trade_search form #searchsubmit,
+	.sec_contents_right .trade_search form #searchsubmit,
+	aside .trade_search form #searchsubmit {
+		width: 100%;
+	}
+
+	.site-main .wrap .main_full {
+		padding: 24px 20px;
+	}
+
+	.site-main .wrap .main_full .entry-content figure img {
+		width: 100%;
+	}
+
+	.interview .area_interview {
+		margin-left: -20px;
+		margin-right: -20px;
+		width: calc(100% + 40px);
+		padding: 32px 20px;
+	}
+}
+
+@media (max-width: 520px) {
+	.wrap,
+	.sec_contents .wrap,
+	.list_post_pickup,
+	.sec_news_pickup .title-section {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.title-section {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.title-section p {
+		font-size: 28px;
+	}
+
+	.sec_vis .slider img {
+		height: 210px;
+	}
+
+	.area_today .left,
+	.area_today .right {
+		width: 100%;
+	}
+
+	.area_today {
+		flex-direction: column;
+	}
+
+	.list_post_pickup,
+	.list_facility,
+	.spot_box,
+	.list_contents_trade,
+	.sec_contents .list_contents_trade,
+	.widget-area .list_contents_trade {
+		grid-template-columns: 1fr;
+	}
+
+	.list_facility>li,
+	.sec_contents_trade .list_contents li,
+	.entry-footer .list_contents_trade li {
+		width: 100%;
+	}
+
+	.list_facility li figure img {
+		height: 180px;
+	}
+
+	.list_post li a {
+		align-items: flex-start;
+	}
+
+	.list_post figure {
+		width: 96px;
+	}
+
+	.list_post figure img {
+		height: 96px;
+	}
+
+	.list_post li figcaption {
+		width: calc(100% - 96px);
+		padding-left: 14px;
+	}
+
+	.box_writer {
+		padding: 24px 18px;
+	}
 }
