@@ -1493,7 +1493,7 @@ footer nav ul li {
 	overflow: hidden;
 }
 .sec_vis .slider img {
-	height: 500px;
+	height: 480px;
 	width: 100%;
 	object-fit: cover;
 	border-radius: 8px;
@@ -1638,7 +1638,8 @@ footer nav ul li {
 	background: #ff5e7f;
 }
 .sec_vis_right {
-	width: 60%;
+	width: 750px;
+	height:510px;
 }
 .sec_news {
 	margin-top: 50px;
