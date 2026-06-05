@@ -10,6 +10,7 @@
 !/spacenoid/
 !/azalove/
 !/ok-berlin/
+!/baba_farm/
 
 ### macOS
 .DS_Store
@@ -124,6 +125,10 @@
 /ok-berlin/conf/
 /ok-berlin/logs/
 /ok-berlin/app/
+
+### baba_farm: theme files are tracked at /baba_farm
+/baba_farm/node_modules/
+/baba_farm/vendor/
 
 ### Always ignore local/generated artifacts re-exposed by site unignore rules
 **/.DS_Store
