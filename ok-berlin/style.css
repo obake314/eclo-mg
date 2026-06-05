@@ -1638,8 +1638,9 @@ footer nav ul li {
 	background: #ff5e7f;
 }
 .sec_vis_right {
-	width: 750px;
-	height:510px;
+	width: 60%;
+	height: 500px;
+	position: relative;
 }
 .sec_news {
 	margin-top: 50px;
@@ -2526,6 +2527,7 @@ aside .list_contents_trade li a figcaption h2 {
 	}
 	.sec_vis_right {
 		width: 100%;
+		height: 250px;
 	}
 	.sec_news .wrap {
 		flex-direction: column;
@@ -3049,7 +3051,8 @@ video {
 	min-width: 0;
 	width: auto;
 	max-width: 750px;
-	height: auto;
+	height: clamp(280px, 40vw, 480px);
+	position: relative;
 }
 
 .sec_vis .slider img {
@@ -3202,7 +3205,7 @@ video {
 	}
 
 	.sec_vis_right {
-		height: auto;
+		height: 250px;
 	}
 
 	.sec_vis .slider img {

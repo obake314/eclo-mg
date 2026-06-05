@@ -90,7 +90,7 @@ function okberlin_scripts() {
 	wp_enqueue_style( 'okberlin-fonts-bad-script', 'https://fonts.googleapis.com/css2?family=Bad+Script&display=swap', array(), null );
 	wp_enqueue_style( 'okberlin-fonts-vt323', 'https://fonts.googleapis.com/css2?family=VT323&display=swap', array(), null );
 	wp_enqueue_style( 'okberlin-fonts-roboto-mono', 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap', array(), null );
-	wp_enqueue_style( 'okberlin-style', get_stylesheet_uri(), array( 'okberlin-fonts-bad-script', 'okberlin-fonts-vt323', 'okberlin-fonts-roboto-mono' ), _S_VERSION );
+	wp_enqueue_style( 'okberlin-style', get_stylesheet_uri(), array( 'okberlin-fonts-bad-script', 'okberlin-fonts-vt323', 'okberlin-fonts-roboto-mono' ), filemtime( get_stylesheet_directory() . '/style.css' ) );
 	wp_enqueue_script( 'okberlin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'okberlin-slider', get_template_directory_uri() . '/js/slider.js', array(), _S_VERSION, true );
 

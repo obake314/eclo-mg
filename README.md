@@ -28,7 +28,9 @@ Local Sites/
   spacenoid/
     app/public/wp-content/themes/spacenoid/
   ok-berlin/
-    app/public/wp-content/themes/okberlin/
+    style.css
+    functions.php
+    ...
   admin/        # eclo-mg 管理対象外
   capital/      # eclo-mg 管理対象外
   ...
@@ -46,8 +48,8 @@ Local Sites/
 ```bash
 cd "/Users/t_okazaki/Local Sites"
 git status --short
-git add README.md .gitignore .github/workflows avant-p/app/public/wp-content/themes/avan-p
-git commit -m "Update avant-p theme"
+git add README.md .gitignore .github/workflows ok-berlin
+git commit -m "Update ok-berlin theme"
 git push
 ```
 

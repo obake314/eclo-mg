@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "ok-berlin/app/public/wp-content/themes/okberlin/**"
+      - "ok-berlin/**"
   workflow_dispatch:
 
 concurrency:
@@ -24,7 +24,7 @@ jobs:
       SSH_PORT: ${{ secrets.OK_BERLIN_SSH_PORT || '2222' }}
       WP_ROOT: ${{ secrets.OK_BERLIN_WP_ROOT }}
       THEME_NAME: okberlin
-      LOCAL_THEME: ok-berlin/app/public/wp-content/themes/okberlin
+      LOCAL_THEME: ok-berlin
       SSH_OPTS: "-o BatchMode=no -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
 
     steps:
