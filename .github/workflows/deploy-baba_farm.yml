@@ -57,45 +57,30 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
-      - name: Install deploy tools
+      - name: Test SSH connection
         shell: bash
         run: |
           set -euo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y lftp
+          ssh -i ~/.ssh/deploy_key \
+            -p "$SSH_PORT" \
+            -o StrictHostKeyChecking=yes \
+            -o ConnectTimeout=20 \
+            "$SSH_USER@$SSH_HOST" \
+            "ls '$WP_ROOT/wp-content/themes' > /dev/null"
 
-      - name: Test SFTP connection
-        shell: bash
-        run: |
-          set -euo pipefail
-          lftp -p "$SSH_PORT" "sftp://$SSH_USER@$SSH_HOST" <<EOF
-          set cmd:fail-exit yes
-          set sftp:connect-program "ssh -a -x -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
-          cls -1 "$WP_ROOT/wp-content/themes" >/dev/null
-          bye
-          EOF
-
-      - name: Sync theme over SFTP
+      - name: Sync theme via rsync
         shell: bash
         run: |
           set -euo pipefail
           test -f "$LOCAL_THEME/style.css"
 
-          remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15" \
+            --exclude='.DS_Store' \
+            --exclude='node_modules/' \
+            --exclude='vendor/' \
+            --exclude='.git/' \
+            "./$LOCAL_THEME/" \
+            "$SSH_USER@$SSH_HOST:$WP_ROOT/wp-content/themes/$THEME_NAME/"
 
-          lftp -p "$SSH_PORT" "sftp://$SSH_USER@$SSH_HOST" <<EOF
-          set cmd:fail-exit yes
-          set sftp:connect-program "ssh -a -x -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15"
-          set sftp:auto-confirm yes
-          set net:max-retries 2
-          set net:timeout 20
-          mirror -R --delete --verbose \
-            --exclude-glob .DS_Store \
-            --exclude-glob node_modules/ \
-            --exclude-glob vendor/ \
-            --exclude-glob .git/ \
-            "$LOCAL_THEME/" "$remote_theme/"
-          cls -1 "$remote_theme/style.css" >/dev/null
           echo "Deployed $THEME_NAME theme."
-          bye
-          EOF
