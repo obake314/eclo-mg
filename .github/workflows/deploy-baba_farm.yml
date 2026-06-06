@@ -47,26 +47,27 @@ jobs:
             fi
           done
 
-      - name: Setup SSH key
+      - name: Load SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.BABA_FARM_SSH_KEY }}
+
+      - name: Add known hosts
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.BABA_FARM_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
       - name: Test SSH connection
         shell: bash
         run: |
           set -euo pipefail
-          ssh -v -i ~/.ssh/deploy_key \
-            -p "$SSH_PORT" \
-            -o StrictHostKeyChecking=accept-new \
+          ssh -p "$SSH_PORT" \
+            -o StrictHostKeyChecking=yes \
             -o ConnectTimeout=20 \
             "$SSH_USER@$SSH_HOST" \
-            "ls '$WP_ROOT/wp-content/themes' > /dev/null"
+            "ls '$WP_ROOT/wp-content/themes' > /dev/null && echo 'SSH OK'"
 
       - name: Sync theme via rsync
         shell: bash
@@ -75,7 +76,7 @@ jobs:
           test -f "$LOCAL_THEME/style.css"
 
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15" \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15" \
             --exclude='.DS_Store' \
             --exclude='node_modules/' \
             --exclude='vendor/' \
