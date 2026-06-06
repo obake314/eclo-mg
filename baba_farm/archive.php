@@ -62,6 +62,9 @@ echo paginate_links(
 ?>
 </div>
 </main>
+
+<?php get_sidebar(); ?>
+
 </div>
 <!-- #main -->
 
