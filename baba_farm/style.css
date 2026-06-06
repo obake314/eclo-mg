@@ -713,6 +713,7 @@ header .drawer-hamburger-icon {
   width: 100%;
   height: 100%;
   background: rgb(var(--color-overlay-rgb) / 30%);
+  pointer-events: none;
 }
 .sec_vis figure h2 {
   color: var(--color-white);
@@ -745,7 +746,7 @@ header .drawer-hamburger-icon {
   display: none;
 }
 .sec_media {
-  padding: 140px 0;
+  padding: 80px 0;
   background: var(--color-white);
 }
 .sec_media .container {
@@ -753,37 +754,62 @@ header .drawer-hamburger-icon {
   margin: 0 auto;
 }
 
-/* コラムカード（左列） */
+/* コラムカード（左列）: 3枚縦並び */
 .list_column_media {
-  gap: 48px;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list_column_media > li {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-main-lite);
+  align-items: flex-start;
+}
+.list_column_media > li:first-child {
+  border-top: 1px solid var(--color-main-lite);
 }
 .list_column_media .wp-block-post-featured-image {
   overflow: hidden;
+  flex-shrink: 0;
+  width: 120px;
+  height: 80px;
 }
 .list_column_media .wp-block-post-featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform var(--tr-ui);
 }
 .list_column_media > li:hover .wp-block-post-featured-image img {
   transform: scale(1.04);
 }
 .list_column_media .wp-block-post-title {
-  font-size: 18px;
+  font-size: 15px;
   font-family: var(--font-basic);
   font-weight: 600;
   color: var(--color-main);
   line-height: 1.6;
-  margin: 10px 0 6px;
+  margin: 0 0 4px;
 }
 .list_column_media .wp-block-post-title a { color: var(--color-main); }
 .list_column_media .wp-block-post-excerpt__excerpt {
-  font-size: 13px;
+  font-size: 12px;
   color: #555;
-  line-height: 1.9;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .list_column_media .wp-block-post-date {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-sub);
   font-family: var(--font-display);
+  margin-bottom: 4px;
+  display: block;
 }
 
 /* ニュースリスト（右列） */
@@ -792,10 +818,10 @@ header .drawer-hamburger-icon {
 }
 .sec_media .wp-block-post-template > li {
   border-bottom: 1px solid var(--color-main-lite);
-  padding: 16px 0;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 .sec_media .wp-block-post-template > li:first-child {
   border-top: 1px solid var(--color-main-lite);

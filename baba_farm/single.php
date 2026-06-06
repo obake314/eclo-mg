@@ -7,18 +7,17 @@
 
 get_header();
 ?>
-<div id="primary" class="site-main">
-<div class="entry-header">
+<div class="page-header">
 <div class="entry-title">
 	<?php if ( get_queried_object()->post_type === 'column' ) : ?>
 	<p>COLUMN</p>
-	<h1> 馬場園芸コラム</h1>
+	<h1>馬場園芸コラム</h1>
 	<?php else : ?>
 	<p>INFORMATION</p>
-	<h1> お知らせ</h1>
+	<h1>お知らせ</h1>
 	<?php endif; ?>
 </div>
-</div>
+</div><!-- .page-header -->
 <div class="flexbox container main_container">
 <main class="main_left">
 	<?php
