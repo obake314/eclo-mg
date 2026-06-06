@@ -59,30 +59,32 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
-      - name: Test SSH connection
+      - name: Install lftp
         shell: bash
-        run: |
-          set -euo pipefail
-          ssh -vvv -p "$SSH_PORT" \
-            -o StrictHostKeyChecking=yes \
-            -o ConnectTimeout=20 \
-            -o GSSAPIAuthentication=no \
-            "$SSH_USER@$SSH_HOST" \
-            "echo 'SSH OK'" 2>&1 || true
+        run: sudo apt-get install -y lftp
 
-      - name: Sync theme via rsync
+      - name: Sync theme via SFTP
         shell: bash
         run: |
           set -euo pipefail
           test -f "$LOCAL_THEME/style.css"
 
-          rsync -avz --delete \
-            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15" \
-            --exclude='.DS_Store' \
-            --exclude='node_modules/' \
-            --exclude='vendor/' \
-            --exclude='.git/' \
-            "./$LOCAL_THEME/" \
-            "$SSH_USER@$SSH_HOST:$WP_ROOT/wp-content/themes/$THEME_NAME/"
+          remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
+          ssh_opts="-o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15 -p $SSH_PORT"
 
+          lftp -u "$SSH_USER"," " -p "$SSH_PORT" "sftp://$SSH_HOST" <<EOF
+          set sftp:connect-program "ssh -a -x $ssh_opts"
+          set cmd:fail-exit yes
+          set sftp:auto-confirm yes
+          set net:max-retries 2
+          set net:timeout 20
+          mirror -R --delete --verbose \
+            --exclude-glob .DS_Store \
+            --exclude-glob node_modules/ \
+            --exclude-glob vendor/ \
+            --exclude-glob .git/ \
+            $LOCAL_THEME/ $remote_theme/
+          cls -1 $remote_theme/style.css >/dev/null
           echo "Deployed $THEME_NAME theme."
+          bye
+          EOF
