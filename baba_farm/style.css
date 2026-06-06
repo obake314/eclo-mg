@@ -37,6 +37,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   --color-lightgray: #efefef;
   --color-gray-avatar: #aaa;
   --color-accent-light: #b2c4d9;
+  --tr-ui: 0.4s;
 }
 
 *, *::before, *::after {
@@ -101,7 +102,7 @@ body.page-id-4352 {
   letter-spacing: 0.1em;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color var(--tr-ui), color var(--tr-ui);
 }
 .wp-block-button__link::after,
 .wp-element-button::after {
@@ -114,7 +115,7 @@ body.page-id-4352 {
   border-top: 1px solid var(--color-main);
   border-right: 1px solid var(--color-main);
   transform: translateY(-50%) rotate(45deg);
-  transition: right 0.25s ease, border-color 0.25s ease;
+  transition: right var(--tr-ui), border-color var(--tr-ui);
 }
 .wp-block-button__link:hover,
 .wp-block-button__link:focus-visible,
@@ -149,7 +150,7 @@ a {
   background-color: transparent;
   color: var(--color-text);
   text-decoration: none;
-  transition: 0.4s;
+  transition: var(--tr-ui);
   word-break: break-all;
 }
 a:hover {
@@ -524,7 +525,7 @@ header .drawer-hamburger-icon {
   left: 0;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+  transition: background-color var(--tr-ui), box-shadow var(--tr-ui);
 }
 .site-header.is-scrolled {
   background-color: var(--color-white);
@@ -760,7 +761,7 @@ header .drawer-hamburger-icon {
   overflow: hidden;
 }
 .list_column_media .wp-block-post-featured-image img {
-  transition: transform 0.5s ease;
+  transition: transform var(--tr-ui);
 }
 .list_column_media > li:hover .wp-block-post-featured-image img {
   transform: scale(1.04);
@@ -866,7 +867,7 @@ header .drawer-hamburger-icon {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform var(--tr-ui);
 }
 .sec_column .wp-block-query .wp-block-group.alignwide:hover .wp-block-post-featured-image img {
   transform: scale(1.04);
@@ -1316,7 +1317,7 @@ header .drawer-hamburger-icon {
   display: inline-block;
   padding: 10px 30px;
   text-decoration: none;
-  transition: 0.4s;
+  transition: var(--tr-ui);
 }
 .entry-content .entry-btn a:hover {
   opacity: 0.4;
@@ -1539,7 +1540,7 @@ header .drawer-hamburger-icon {
   display: inline-block;
   font-size: 13px;
   margin-top: 20px;
-  transition: 0.4s;
+  transition: var(--tr-ui);
 }
 .introbox {
   padding: 0 0 0 40px;
@@ -1920,7 +1921,7 @@ aside .banner li {
   border: 1px solid var(--color-main-lite);
 }
 aside .banner li a {
-  transition: 0.4s;
+  transition: var(--tr-ui);
   display: block;
 }
 aside .banner li a:hover {
@@ -1953,7 +1954,7 @@ aside .banner li a:hover {
   display: block;
   top: 0;
   left: 0;
-  transition: 0.4s;
+  transition: var(--tr-ui);
 }
 .main_left ul.list_news {
   margin-bottom: 60px;
