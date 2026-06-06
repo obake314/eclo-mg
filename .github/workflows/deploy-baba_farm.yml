@@ -61,9 +61,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/deploy_key \
+          ssh -v -i ~/.ssh/deploy_key \
             -p "$SSH_PORT" \
-            -o StrictHostKeyChecking=yes \
+            -o StrictHostKeyChecking=accept-new \
             -o ConnectTimeout=20 \
             "$SSH_USER@$SSH_HOST" \
             "ls '$WP_ROOT/wp-content/themes' > /dev/null"
