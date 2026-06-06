@@ -13,6 +13,10 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 ?>
 
 <aside id="secondary" class="widget-area">
+<div class="sidebar_about">
+  <p class="sidebar_about__logo"><img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/footer_logo.svg" alt="三右エ門"></p>
+  <p class="sidebar_about__text">岩手県二戸市の農業生産法人・株式会社馬場園芸が運営する直販サイトです。ホワイトアスパラガス「白い果実」、三右エ門栗かぼちゃ、お米「きらほ」をお届けしています。</p>
+</div>
 <ul class="banner">
 	<?php
 		$custom_posts = get_posts(array(
