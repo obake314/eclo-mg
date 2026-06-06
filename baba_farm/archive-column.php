@@ -77,7 +77,5 @@ if(mb_strlen($post->post_content,'UTF-8')>90){
 </div>
 <?php wp_reset_postdata(); ?>
 	</main>
-
-<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
