@@ -754,38 +754,38 @@ header .drawer-hamburger-icon {
   margin: 0 auto;
 }
 
-/* コラムカード（左列）: type-column で確実にターゲット */
-.sec_media .wp-block-post-template .type-column,
+/* コラムカード（左列）: 3枚縦並び */
+.list_column_media {
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 .list_column_media > li {
-  flex-direction: row !important;
+  display: flex;
   gap: 20px;
-  padding: 20px 0 !important;
+  padding: 20px 0;
   border-bottom: 1px solid var(--color-main-lite);
   align-items: flex-start;
 }
-.sec_media .wp-block-post-template .type-column:first-child,
 .list_column_media > li:first-child {
   border-top: 1px solid var(--color-main-lite);
 }
-.sec_media .wp-block-post-template .type-column .wp-block-post-featured-image,
 .list_column_media .wp-block-post-featured-image {
   overflow: hidden;
   flex-shrink: 0;
   width: 120px;
   height: 80px;
 }
-.sec_media .wp-block-post-template .type-column .wp-block-post-featured-image img,
 .list_column_media .wp-block-post-featured-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--tr-ui);
 }
-.sec_media .wp-block-post-template .type-column:hover .wp-block-post-featured-image img,
 .list_column_media > li:hover .wp-block-post-featured-image img {
   transform: scale(1.04);
 }
-.sec_media .wp-block-post-template .type-column .wp-block-post-title,
 .list_column_media .wp-block-post-title {
   font-size: 15px;
   font-family: var(--font-basic);
@@ -794,9 +794,7 @@ header .drawer-hamburger-icon {
   line-height: 1.6;
   margin: 0 0 4px;
 }
-.sec_media .wp-block-post-template .type-column .wp-block-post-title a,
 .list_column_media .wp-block-post-title a { color: var(--color-main); }
-.sec_media .wp-block-post-template .type-column .wp-block-post-excerpt__excerpt,
 .list_column_media .wp-block-post-excerpt__excerpt {
   font-size: 12px;
   color: #555;
@@ -806,7 +804,6 @@ header .drawer-hamburger-icon {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.sec_media .wp-block-post-template .type-column .wp-block-post-date,
 .list_column_media .wp-block-post-date {
   font-size: 11px;
   color: var(--color-sub);
