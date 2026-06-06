@@ -740,9 +740,8 @@ header .drawer-hamburger-icon {
 }
 
 /* === sec_media（NEWS + COLUMN 統合） === */
-.sec_news,
-.sec_column {
-  display: none; /* 旧セクション非表示（sec_media に統合済み） */
+.sec_news {
+  display: none;
 }
 .sec_media {
   padding: 140px 0;
@@ -1042,6 +1041,11 @@ header .drawer-hamburger-icon {
     font-size: 14px;
     letter-spacing: 0.1em;
     line-height: 2.2;
+}
+
+.list_brand .wp-block-buttons {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .list_brand > .wp-block-column > .wp-block-group:before{
