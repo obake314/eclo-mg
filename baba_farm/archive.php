@@ -50,14 +50,7 @@ if ( ! empty( $categories ) ) : ?>
 <?php endif; ?>
 <time class="meta_date"><?php the_time( 'Y/m/d' ); ?></time>
 </div>
-<p><?php
-if ( mb_strlen( $post->post_content, 'UTF-8' ) > 90 ) {
-	$content = str_replace( '\n', '', mb_substr( strip_tags( $post->post_content ), 0, 90, 'UTF-8' ) );
-	echo $content . '……';
-} else {
-	echo str_replace( '\n', '', strip_tags( $post->post_content ) );
-}
-?></p>
+<p><?php echo get_the_excerpt(); ?></p>
 </figcaption>
 </li>
 <?php endforeach; endif; ?>

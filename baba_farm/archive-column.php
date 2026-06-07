@@ -12,7 +12,7 @@ get_header();
 <div class="page-header">
 <div class="entry-title">
 	<p>COLUMN</p>
-	<h1> 馬場園芸コラム</h1>
+	<h1>馬場園芸コラム</h1>
 </div>
 </div><!-- .page-header -->
 <div class="flexbox container main_container">			
@@ -56,14 +56,7 @@ if ( !empty($terms) ) : if ( !is_wp_error($terms) ) :
 
 <time class="meta_date"><?php the_time('Y/m/d') ?></time>
 </div>
-<p><?php
-if(mb_strlen($post->post_content,'UTF-8')>90){
-	$content= str_replace('\n', '', mb_substr(strip_tags($post-> post_content), 0, 90,'UTF-8'));
-	echo $content.'……';
-}else{
-	echo str_replace('\n', '', strip_tags($post->post_content));
-}
-?></p>
+<p><?php echo get_the_excerpt(); ?></p>
 </figcaption>
 
 </li>

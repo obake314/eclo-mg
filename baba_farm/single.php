@@ -11,10 +11,10 @@ get_header();
 <div class="entry-title">
 	<?php if ( get_queried_object()->post_type === 'column' ) : ?>
 	<p>COLUMN</p>
-	<h1>馬場園芸コラム</h1>
+	<p class="section-label">馬場園芸コラム</p>
 	<?php else : ?>
 	<p>INFORMATION</p>
-	<h1>お知らせ</h1>
+	<p class="section-label">お知らせ</p>
 	<?php endif; ?>
 </div>
 </div><!-- .page-header -->

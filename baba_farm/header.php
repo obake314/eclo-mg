@@ -59,11 +59,7 @@ $shop_url = 'https://poke-m.com/products?words=%E4%B8%89%E5%8F%B3%E3%82%A8%E9%96
 		</ul>
 	</nav><!-- #site-navigation -->
 </header>
-<div class="side_fixed_online_bnr">
-	<a onclick="gtag('event','ボタンクリック',{'click_category':'btn','btn_position':'header'});" href="<?php echo esc_url( $shop_url ); ?>" target="_blank">
-		<i class="fas fa-shopping-cart"></i>　オンラインストア
-	</a>
-</div>
+
 <div id="page" class="site">
 	<header id="masthead" class="site-header pc_only">
 	<div class="container flexbox">

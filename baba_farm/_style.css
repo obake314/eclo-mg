@@ -590,25 +590,7 @@ header .drawer-hamburger-icon {
 .main-navigation.toggled ul {
   display: block;
 }
-.side_fixed_online_bnr {
-  position: fixed;
-  right: 0;
-  top: 35%;
-  bottom: 5%;
-  z-index: 10;
-  writing-mode: vertical-rl;
-}
-.side_fixed_online_bnr a {
-  background: var(--color-sub);
-  color: var(--color-white);
-  color: var(--color-white);
-  width: 40px;
-  display: block;
-  height: 180px;
-  text-align: center;
-  line-height: 1;
-  padding: 15px;
-}
+
 .header02 li a {
   background: var(--color-sub);
   color: var(--color-white);
