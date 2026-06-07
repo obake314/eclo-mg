@@ -2308,6 +2308,7 @@ th {
    ============================================================== */
 
 @media screen and (max-width: 1200px) {
+	/* SP layout fixes for local theme deployment */
 	body {
 		overflow-x: hidden;
 		padding-top: 0;
