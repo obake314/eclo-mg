@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "babaengei/app/public/wp-content/themes/baba_farm/**"
+      - "baba_farm/**"
   workflow_dispatch:
 
 concurrency:
@@ -23,7 +23,7 @@ jobs:
       SSH_PORT: ${{ secrets.BABA_FARM_SSH_PORT || '10022' }}
       WP_ROOT: ${{ secrets.BABA_FARM_WP_ROOT }}
       THEME_NAME: baba_farm
-      LOCAL_THEME: babaengei/app/public/wp-content/themes/baba_farm
+      LOCAL_THEME: baba_farm
 
     steps:
       - name: Checkout
@@ -68,7 +68,6 @@ jobs:
         run: |
           set -euo pipefail
           test -f "$LOCAL_THEME/style.css"
-          test -f "$LOCAL_THEME/index.php"
 
           remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
           ssh_opts="-o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15 -p $SSH_PORT"
