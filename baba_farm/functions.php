@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', '1.0.1' );
 }
 
 if ( ! function_exists( 'baba_farm_setup' ) ) {
@@ -161,12 +161,42 @@ function baba_farm_post_thumbnail() {
 	<?php endif;
 }
 
+function baba_farm_is_product_lp_page() {
+	return is_page(
+		array(
+			'shiroi-kajitsu',
+			'kuri-kabocha',
+			'kiraho-genmai',
+			7263,
+			7389,
+			7480,
+		)
+	);
+}
+
+function baba_farm_product_lp_template( $template ) {
+	if ( baba_farm_is_product_lp_page() ) {
+		$product_template = locate_template( 'page-product.php' );
+
+		if ( $product_template ) {
+			return $product_template;
+		}
+	}
+
+	return $template;
+}
+add_filter( 'template_include', 'baba_farm_product_lp_template', 20 );
+
 function baba_farm_body_classes( $classes ) {
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
 	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 		$classes[] = 'no-sidebar';
+	}
+	if ( baba_farm_is_product_lp_page() ) {
+		$classes[] = 'page-template-page-product';
+		$classes[] = 'page-template-page-product-php';
 	}
 	return $classes;
 }

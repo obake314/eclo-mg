@@ -2627,6 +2627,15 @@ th {
 	body.page-template-page-product .headline h2 {
 		font-size: 25px;
 	}
+	body.page-template-page-product .sec_about>.wp-block-group:first-child {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--sp-2);
+	}
+	body.page-template-page-product .sec_about>.wp-block-group:first-child>.wp-block-group,
+	body.page-template-page-product .sec_about>.wp-block-group:first-child>p {
+		width: 100%;
+	}
 	body.page-template-page-product .sec_about>.wp-block-group:first-child>p {
 		text-align: left;
 	}
