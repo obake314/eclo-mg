@@ -11,6 +11,7 @@
 !/azalove/
 !/ok-berlin/
 !/baba_farm/
+!/babaengei/
 
 ### macOS
 .DS_Store
@@ -130,6 +131,46 @@
 /baba_farm/node_modules/
 /baba_farm/vendor/
 
+### babaengei: Local by Flywheel / local environment
+/babaengei/conf/
+/babaengei/logs/
+
+### babaengei: WordPress core and environment files
+/babaengei/app/public/*
+!/babaengei/app/public/wp-content/
+/babaengei/app/public/wp-config.php
+/babaengei/app/public/local-*.php
+
+### babaengei: WordPress content generated at runtime
+/babaengei/app/public/wp-content/*
+/babaengei/app/public/wp-content/uploads/
+/babaengei/app/public/wp-content/upgrade/
+/babaengei/app/public/wp-content/upgrade-temp-backup/
+/babaengei/app/public/wp-content/ai1wm-backups/
+/babaengei/app/public/wp-content/cache/
+/babaengei/app/public/wp-content/wpo-cache/
+/babaengei/app/public/wp-content/wflogs/
+/babaengei/app/public/wp-content/wflogs-old/
+/babaengei/app/public/wp-content/siteguard/
+/babaengei/app/public/wp-content/ewww/
+/babaengei/app/public/wp-content/languages/
+/babaengei/app/public/wp-content/plugins/
+/babaengei/app/public/wp-content/backup*/
+/babaengei/app/public/wp-content/backups/
+/babaengei/app/public/wp-content/debug.log
+/babaengei/app/public/wp-content/*.log
+/babaengei/app/public/wp-content/*.sql
+/babaengei/app/public/wp-content/*.wpress
+
+### babaengei: track only the local theme used for deployment
+!/babaengei/app/
+!/babaengei/app/public/
+!/babaengei/app/public/wp-content/
+!/babaengei/app/public/wp-content/themes/
+/babaengei/app/public/wp-content/themes/*
+!/babaengei/app/public/wp-content/themes/baba_farm/
+!/babaengei/app/public/wp-content/themes/baba_farm/**
+
 ### Always ignore local/generated artifacts re-exposed by site unignore rules
 **/.DS_Store
 **/._*
@@ -137,6 +178,7 @@
 /spacenoid/app/sql/
 /azalove/app/sql/
 /ok-berlin/app/sql/
+/babaengei/app/sql/
 
 # Add more managed sites by unignoring the site directory above,
 # then adding site-specific WordPress ignore rules.
