@@ -20,9 +20,11 @@
 			<p class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>company">株式会社馬場園芸</a></p>
 			<address>
 			<p>〒028-6851 岩手県二戸市浄法寺町小池60-2</p>
-			<p><br></p>
-			<p><a href="https://sannimon.com/privacypolicy">プライバシーポリシー</a></p>
 			</address>
+			<nav class="footer_nav">
+				<a href="<?php echo esc_url( home_url( '/tokusho' ) ); ?>">特定商取引法表示</a>
+				<a href="https://sannimon.com/privacypolicy">プライバシーポリシー</a>
+			</nav>
 		</div>
 		<div class="right">
 			<p>ご注文はお電話またはFAXでお受けいたします。</p>
