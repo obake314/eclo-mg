@@ -68,6 +68,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f "$LOCAL_THEME/style.css"
+          test -f "$LOCAL_THEME/index.php"
 
           remote_theme="$WP_ROOT/wp-content/themes/$THEME_NAME"
           ssh_opts="-o StrictHostKeyChecking=yes -o ConnectTimeout=20 -o ServerAliveInterval=15 -p $SSH_PORT"
@@ -85,6 +86,7 @@ jobs:
             --exclude-glob .git/ \
             $LOCAL_THEME/ $remote_theme/
           cls -1 $remote_theme/style.css >/dev/null
+          cls -1 $remote_theme/index.php >/dev/null
           echo "Deployed $THEME_NAME theme."
           bye
           EOF

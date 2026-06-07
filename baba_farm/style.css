@@ -2308,6 +2308,14 @@ th {
    ============================================================== */
 
 @media screen and (max-width: 1200px) {
+	body {
+		overflow-x: hidden;
+		padding-top: 0;
+	}
+	#page {
+		width: 100%;
+		overflow-x: hidden;
+	}
 	.sp_only {
 		display: block;
 	}
@@ -2316,20 +2324,78 @@ th {
 	}
 	header.sp_only {
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
 		padding: var(--sp-1) var(--sp-2);
+		background: var(--color-white);
+		position: relative;
+		z-index: 1001;
 	}
-	.sec_vis figure {
-		height: calc(90vh - 80px);
-		background: url(https://sannimon.com/wp-content/uploads/vis_sp-1.jpeg);
-		background-position: right bottom;
+	.drawer--right header .drawer-nav {
+		right: auto;
+		left: 0;
+		width: 100%;
+		max-width: 100%;
+		min-height: 100vh;
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+		overflow-y: auto;
+		transform: none;
+		transition: opacity var(--tr-ui), visibility var(--tr-ui);
+	}
+	.drawer-open.drawer--right header .drawer-nav {
+		display: grid;
+		visibility: visible;
+		opacity: 1;
+		pointer-events: auto;
+	}
+	header .drawer-nav .menu-menu-1-container,
+	header .drawer-nav ul {
+		width: 100%;
+		max-width: 420px;
+	}
+	.sec_vis {
+		display: block;
+		width: 100%;
+		min-height: auto;
+		margin: 0;
+		overflow: hidden;
+		background-position: center top;
 		background-size: cover;
 	}
-	.sec_vis figure p {
-		padding-left: 0;
-		margin: var(--sp-3) auto;
-		width: 50vw;
+	.sec_vis::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, rgb(var(--color-main-rgb) / 50%) 0%, rgb(var(--color-main-rgb) / 18%) 45%, rgb(var(--color-main-rgb) / 0%) 100%);
+		pointer-events: none;
+	}
+	.sec_vis .container {
 		position: relative;
+		z-index: 1;
+		padding: var(--sp-5) var(--sp-2) var(--sp-3);
+	}
+	.sec_vis .container h2 {
+		max-width: 10em;
+		font-size: clamp(28px, 7.4vw, 36px);
+		line-height: 1.42;
+		text-shadow: 0 2px 14px rgb(var(--color-black-rgb) / 52%);
+	}
+	.sec_vis .vis_bn {
+		margin-top: var(--sp-4);
+	}
+	.sec_vis .vis_bn figure {
+		height: auto;
+		margin: 0;
+		background: none;
+	}
+	.sec_vis .vis_bn img {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 3 / 1;
+		object-fit: cover;
 	}
 	.site-header {
 		padding: var(--sp-1) var(--sp-6);
@@ -2357,6 +2423,14 @@ th {
 	}
 	.container {
 		width: 100%;
+	}
+	.entry-main,
+	.sec_vis .container,
+	.sec_media {
+		width: 100%;
+	}
+	.entry-main {
+		max-width: 1200px;
 	}
 	.sec_news, .sec_brands, .sec_column, .sec_mission, .sec_news .container {
 		width: 100%;
@@ -2400,6 +2474,21 @@ th {
 	}
 }
 @media screen and (max-width: 780px) {
+	.wp-block-columns:not(.is-not-stacked-on-mobile) {
+		flex-wrap: wrap !important;
+	}
+	.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+		flex: 0 0 100% !important;
+		width: 100% !important;
+		min-width: 0;
+		margin-left: 0;
+	}
+	.wp-block-columns {
+		gap: var(--sp-2) !important;
+	}
+	body.page-template-page-product .headline {
+		width: 100%;
+	}
 	.site-header {
 		padding: var(--sp-2);
 	}
@@ -2487,6 +2576,12 @@ th {
 	}
 	.sec_media .wp-block-columns {
 		flex-direction: column;
+	}
+	.list_column_media .wp-block-columns {
+		display: block !important;
+	}
+	.list_column_media .wp-block-columns > .wp-block-column + .wp-block-column {
+		margin-top: var(--sp-1);
 	}
 	.list_column_media>li {
 		grid-template-columns: 1fr;
@@ -2618,6 +2713,7 @@ th {
 		flex-direction: column;
 	}
 	.main_left ul.list_news>li {
+		flex-direction: column;
 		gap: var(--sp-2);
 	}
 	.main_left ul li figure {
