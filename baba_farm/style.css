@@ -1818,6 +1818,16 @@ header .drawer-hamburger-icon {
 	padding-bottom: var(--sp-2);
 	border-bottom: 1px double var(--color-main);
 }
+.sidebar_headline {
+	margin-bottom: var(--sp-2);
+}
+.sidebar_headline p {
+	letter-spacing: 0.42em;
+}
+.sidebar_headline h2 {
+	font-size: 22px;
+	letter-spacing: 0.16em;
+}
 .section_headline {
 	font-size: 30px;
 	color: var(--color-sub);
@@ -1859,9 +1869,27 @@ aside .banner li a {
 aside .banner li a:hover {
 	opacity: 0.4;
 }
+aside .widget_recent_entries ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+aside .widget_recent_entries ul li {
+	border-bottom: 1px solid var(--color-main-lite);
+	padding: var(--sp-1) 0;
+	margin: 0;
+}
+aside .widget_recent_entries ul li a {
+	color: var(--color-text);
+	line-height: 1.7;
+}
+aside .widget_recent_entries ul li a:hover {
+	color: var(--color-sub);
+	opacity: 1;
+}
 #recent-posts-2 ul li {
-	padding-bottom: var(--sp-2);
-	margin-bottom: var(--sp-2);
+	padding: var(--sp-1) 0;
+	margin: 0;
 	border-bottom: 1px solid var(--color-main-lite);
 }
 .main_left {

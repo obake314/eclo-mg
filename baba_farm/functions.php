@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '1.0.2' );
+	define( '_S_VERSION', '1.0.3' );
 }
 
 if ( ! function_exists( 'baba_farm_setup' ) ) {
@@ -44,8 +44,8 @@ function baba_farm_widgets_init() {
 			'description'   => esc_html__( 'Add widgets here.', 'baba_farm' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'before_title'  => '<div class="headline sidebar_headline"><p>Side menu</p><h2>',
+			'after_title'   => '</h2></div>',
 		)
 	);
 }
