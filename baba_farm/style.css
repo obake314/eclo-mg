@@ -2669,7 +2669,7 @@ th {
 		font-size: 18px;
 	}
 	body.page-template-page-product .sec_kv .wp-block-cover__inner-container {
-		width: calc(100% - 40px);
+		width: calc(100% - 48px);
 		margin-bottom: var(--sp-4);
 		padding: var(--sp-2) var(--sp-2);
 	}
@@ -2681,7 +2681,7 @@ th {
 	body.page-template-page-product .sec_voice>.wp-block-group,
 	body.page-template-page-product .sec_calender>.wp-block-group, 
 	body.page-template-page-product .sec_products>.wp-block-group {
-	width: calc(100% - 40px);
+		width: calc(100% - 48px);
 	}
 	body.page-template-page-product .headline h2 {
 		font-size: 25px;
@@ -2699,7 +2699,7 @@ th {
 		text-align: left;
 	}
 	body.page-template-page-product .sec_about .wp-block-columns, body.page-template-page-product .sec_about>.wp-block-group:nth-of-type(3) .wp-block-columns {
-		width: calc(100vw - 40px);
+		width: 100%;
 		flex-direction: column;
 		gap: var(--sp-2);
 		margin-top: var(--sp-4);
@@ -2715,7 +2715,7 @@ th {
 		padding: var(--sp-2) var(--sp-2);
 	}
 	body.page-template-page-product .box_cta {
-		width: calc(100% - 40px);
+		width: calc(100% - 48px);
 		margin: var(--sp-5) auto;
 		padding: var(--sp-2) var(--sp-2);
 	}
@@ -2749,11 +2749,11 @@ th {
 	}
 	.archive .main_container, .single .main_container {
 		width: 100%;
-		padding: var(--sp-2);
+		padding: 0 var(--sp-2);
 	}
 	.main_left {
 		width: 100%;
-		padding: 0 var(--sp-2);
+		padding: 0;
 	}
 	.entry-title p {
 		font-size: 30px;
@@ -2797,7 +2797,7 @@ th {
 	}
 	aside {
 		width: 100%;
-		padding: 0 var(--sp-2);
+		padding: 0;
 	}
 	.list_pickup .swiper-button-prev {
 		left: 10px;
@@ -2824,6 +2824,9 @@ th {
 	.entry-content {
 		width: 100%;
 		padding: var(--sp-2);
+	}
+	.single .entry-content {
+		padding: 0;
 	}
 	.timeline {
 		width: 100%;
@@ -2938,7 +2941,7 @@ th {
 }
 @media only screen and (max-width: 680px) {
 	body.page-template-page-product .sec_kv .wp-block-cover__inner-container {
-		width: calc(100% - 28px);
+		width: calc(100% - 48px);
 		padding: var(--sp-2) var(--sp-2);
 	}
 	body.page-template-page-product .kv_headline {
@@ -2951,6 +2954,9 @@ th {
 	.entry-content {
 		width: 100%;
 		padding: var(--sp-4) var(--sp-2);
+	}
+	.single .entry-content {
+		padding: 0;
 	}
 	.site_content {
 		width: 100%;
