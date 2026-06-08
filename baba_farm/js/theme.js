@@ -27,6 +27,47 @@ document.addEventListener('DOMContentLoaded', function () {
 		fadeEls.forEach((el) => observer.observe(el));
 	}
 
+	// Make column media cards clickable.
+	document.querySelectorAll('.list_column_media > li').forEach((card) => {
+		const href = card.dataset.cardUrl || card.querySelector('a[href]')?.href;
+		if (!href) return;
+
+		card.classList.add('is-clickable-card');
+		card.setAttribute('role', 'link');
+		card.setAttribute('tabindex', '0');
+
+		const title = card.querySelector('.wp-block-post-title')?.textContent?.trim();
+		if (title && !card.hasAttribute('aria-label')) {
+			card.setAttribute('aria-label', title);
+		}
+
+		const go = () => {
+			window.location.href = href;
+		};
+
+		card.addEventListener('click', (event) => {
+			if (
+				event.defaultPrevented ||
+				event.button !== 0 ||
+				event.metaKey ||
+				event.ctrlKey ||
+				event.shiftKey ||
+				event.altKey ||
+				event.target.closest('a, button, input, textarea, select, label')
+			) {
+				return;
+			}
+
+			go();
+		});
+
+		card.addEventListener('keydown', (event) => {
+			if (event.target !== card || (event.key !== 'Enter' && event.key !== ' ')) return;
+			event.preventDefault();
+			go();
+		});
+	});
+
 	// Drawer hamburger menu
 	const toggle = document.querySelector('.drawer-toggle');
 	if (toggle) {

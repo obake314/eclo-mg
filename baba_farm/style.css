@@ -619,6 +619,13 @@ header .drawer-hamburger-icon {
 	align-items: center;
 	transition: transform var(--tr-ui), box-shadow var(--tr-ui), border-color var(--tr-ui);
 }
+.list_column_media>li.is-clickable-card {
+	cursor: pointer;
+}
+.list_column_media>li.is-clickable-card:focus-visible {
+	outline: 2px solid var(--color-main);
+	outline-offset: 4px;
+}
 .list_column_media>li:first-child {
 	border-top: 1px solid var(--color-main-lite);
 }

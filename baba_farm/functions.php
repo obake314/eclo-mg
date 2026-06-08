@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '1.0.1' );
+	define( '_S_VERSION', '1.0.2' );
 }
 
 if ( ! function_exists( 'baba_farm_setup' ) ) {
@@ -92,6 +92,36 @@ function baba_farm_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'baba_farm_scripts' );
+
+function baba_farm_add_column_media_card_urls( $block_content, $block ) {
+	if ( 'core/post-template' !== ( $block['blockName'] ?? '' ) || false === strpos( $block_content, 'list_column_media' ) ) {
+		return $block_content;
+	}
+
+	return preg_replace_callback(
+		'/<li\b([^>]*)class="([^"]*\bwp-block-post\b[^"]*\bpost-(\d+)\b[^"]*)"([^>]*)>/',
+		function ( $matches ) {
+			if ( false !== strpos( $matches[0], 'data-card-url=' ) ) {
+				return $matches[0];
+			}
+
+			$permalink = get_permalink( (int) $matches[3] );
+			if ( ! $permalink ) {
+				return $matches[0];
+			}
+
+			return sprintf(
+				'<li%1$sclass="%2$s"%3$s data-card-url="%4$s">',
+				$matches[1],
+				$matches[2],
+				$matches[4],
+				esc_url( $permalink )
+			);
+		},
+		$block_content
+	);
+}
+add_filter( 'render_block', 'baba_farm_add_column_media_card_urls', 10, 2 );
 
 function baba_farm_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
