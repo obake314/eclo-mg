@@ -27,12 +27,26 @@ get_header();
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header class="entry-header">
 				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-				<?php if ( 'post' === get_post_type() ) : ?>
-				<div class="entry-meta">
-					<?php
+				<?php
+				$meta_category_name = '';
+
+				if ( 'column' === get_post_type() ) {
+					$terms = get_the_terms( get_the_ID(), 'column_cat' );
+
+					if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+						$meta_category_name = $terms[0]->name;
+					}
+				} elseif ( 'post' === get_post_type() ) {
 					$category = get_the_category();
-					echo esc_html( $category[0]->cat_name );
-					?>
+
+					if ( ! empty( $category ) ) {
+						$meta_category_name = $category[0]->cat_name;
+					}
+				}
+				?>
+				<?php if ( 'column' === get_post_type() || 'post' === get_post_type() ) : ?>
+				<div class="entry-meta">
+					<?php echo esc_html( $meta_category_name ); ?>
 					<time class="meta_date"><?php the_time( 'Y/m/d' ); ?></time>
 				</div>
 				<?php endif; ?>
