@@ -1895,6 +1895,22 @@ aside .widget_recent_entries ul li a:hover {
 	color: var(--color-sub);
 	opacity: 1;
 }
+.sidebar_archive__list li {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.sidebar_archive__list .meta_date {
+	display: block;
+	font-size: 12px;
+	line-height: 1;
+}
+.sidebar_archive__more {
+	margin: var(--sp-2) 0 0;
+}
+.sidebar_archive__more a {
+	width: 100%;
+}
 #recent-posts-2 ul li {
 	padding: var(--sp-1) 0;
 	margin: 0;
