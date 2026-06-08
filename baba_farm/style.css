@@ -1887,6 +1887,14 @@ aside .widget_recent_entries ul li a:hover {
 	color: var(--color-sub);
 	opacity: 1;
 }
+.sidebar_archive .list_infomation a {
+	color: var(--color-text);
+	line-height: 1.7;
+}
+.sidebar_archive .list_infomation a:hover {
+	color: var(--color-sub);
+	opacity: 1;
+}
 #recent-posts-2 ul li {
 	padding: var(--sp-1) 0;
 	margin: 0;

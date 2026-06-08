@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( '_S_VERSION' ) ) {
-	define( '_S_VERSION', '1.0.4' );
+	define( '_S_VERSION', '1.0.5' );
 }
 
 if ( ! function_exists( 'baba_farm_setup' ) ) {
@@ -44,38 +44,12 @@ function baba_farm_widgets_init() {
 			'description'   => esc_html__( 'Add widgets here.', 'baba_farm' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<div class="headline sidebar_headline">',
-			'after_title'   => '</div>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
 		)
 	);
 }
 add_action( 'widgets_init', 'baba_farm_widgets_init' );
-
-function baba_farm_format_widget_title( $title ) {
-	if ( is_admin() || '' === trim( $title ) ) {
-		return $title;
-	}
-
-	if ( false !== strpos( $title, '<h2' ) ) {
-		return $title;
-	}
-
-	$parts = array_map( 'trim', explode( '|', wp_strip_all_tags( $title ), 2 ) );
-
-	if ( 2 === count( $parts ) ) {
-		return sprintf(
-			'<p>%1$s</p><h2>%2$s</h2>',
-			esc_html( $parts[0] ),
-			esc_html( $parts[1] )
-		);
-	}
-
-	return sprintf(
-		'<h2>%s</h2>',
-		esc_html( $parts[0] )
-	);
-}
-add_filter( 'widget_title', 'baba_farm_format_widget_title' );
 
 function baba_farm_scripts() {
 	wp_enqueue_style( 'baba_farm-style', get_stylesheet_uri(), array(), _S_VERSION );

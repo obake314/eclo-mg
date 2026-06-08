@@ -7,9 +7,6 @@
  * @package baba_farm
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
 ?>
 
 <aside id="secondary" class="widget-area">
@@ -35,5 +32,29 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 <li class="sec_post_img"><a href="<?php the_field('banner_link'); ?>"><img src="<?php the_field('banner_img'); ?>" alt="<?php the_title(); ?>"></a></li>
 <?php endforeach; wp_reset_postdata(); endif; ?>
 </ul>
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<section class="sidebar_archive">
+	<div class="headline sidebar_headline">
+		<p>Side menu</p>
+		<h2>過去の記事</h2>
+	</div>
+	<ul class="list_infomation sidebar_archive__list">
+		<?php
+		$recent_posts = get_posts(
+			array(
+				'post_type'      => 'post',
+				'posts_per_page' => 5,
+				'post_status'    => 'publish',
+			)
+		);
+
+		if ( $recent_posts ) :
+			foreach ( $recent_posts as $recent_post ) :
+				?>
+				<li><a href="<?php echo esc_url( get_permalink( $recent_post ) ); ?>"><?php echo esc_html( get_the_title( $recent_post ) ); ?></a></li>
+				<?php
+			endforeach;
+		endif;
+		?>
+	</ul>
+</section>
 </aside><!-- #secondary -->
