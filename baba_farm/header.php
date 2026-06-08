@@ -53,7 +53,15 @@ $shop_url = 'https://poke-m.com/products?words=%E4%B8%89%E5%8F%B3%E3%82%A8%E9%96
 		<span class="drawer-hamburger-icon"></span>
 	</button>
 	<nav class="drawer-nav" role="navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+		<?php
+		wp_nav_menu(
+			array(
+				'theme_location' => 'menu-1',
+				'menu_id'        => 'primary-menu',
+				'depth'          => 1,
+			)
+		);
+		?>
 		<ul class="flexbox header02">
 			<li><a onclick="gtag('event','ボタンクリック',{'click_category':'btn','btn_position':'drawer'});" href="<?php echo esc_url( $shop_url ); ?>"><i class="fas fa-shopping-cart"></i>　オンラインストア</a></li>
 		</ul>

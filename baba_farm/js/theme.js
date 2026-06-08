@@ -75,13 +75,24 @@ document.addEventListener('DOMContentLoaded', function () {
 		overlay.className = 'drawer-overlay';
 		document.body.appendChild(overlay);
 
-		const closeDrawer = () => document.body.classList.remove('drawer-open');
-		const openDrawer  = () => document.body.classList.add('drawer-open');
+		const closeDrawer = () => {
+			document.body.classList.remove('drawer-open');
+			toggle.setAttribute('aria-expanded', 'false');
+		};
+		const openDrawer  = () => {
+			document.body.classList.add('drawer-open');
+			toggle.setAttribute('aria-expanded', 'true');
+		};
+
+		toggle.setAttribute('aria-expanded', 'false');
 
 		toggle.addEventListener('click', function () {
 			document.body.classList.contains('drawer-open') ? closeDrawer() : openDrawer();
 		});
 		overlay.addEventListener('click', closeDrawer);
+		document.querySelectorAll('.drawer-nav a[href]').forEach((link) => {
+			link.addEventListener('click', closeDrawer);
+		});
 		document.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape') closeDrawer();
 		});
