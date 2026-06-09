@@ -47,6 +47,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   --pad-card: clamp(12px, 2.2vw, 24px);
   --radius: 8px;
   --radius-lg: 18px;
+  --transition: 0.3s ease;
   --shadow: 0 14px 34px rgba(33, 127, 141, 0.1);
   --width-content: min(1240px, calc(100vw - 48px));
 }
@@ -146,7 +147,7 @@ b {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  transition: color var(--transition), background-color var(--transition), border-color var(--transition), opacity var(--transition), transform var(--transition);
 }
 
 a:hover {
@@ -287,7 +288,7 @@ aside,
 
 .skip-link,
 .screen-reader-text {
-  position: absolute !important;
+  position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
@@ -296,7 +297,7 @@ aside,
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   border: 0;
-  word-wrap: normal !important;
+  word-wrap: normal;
 }
 
 .skip-link:focus,
@@ -306,7 +307,7 @@ aside,
   z-index: 100000;
   width: auto;
   height: auto;
-  clip: auto !important;
+  clip: auto;
   clip-path: none;
   margin: 0;
   padding: var(--space-s);
@@ -406,7 +407,7 @@ aside,
   height: 2px;
   border-radius: 999px;
   background: var(--color-ink);
-  transition: top 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
+  transition: top var(--transition), transform var(--transition), opacity var(--transition);
 }
 
 .drawer-toggle span:nth-child(1) {
@@ -784,7 +785,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   border-radius: var(--radius-lg);
   background: var(--color-white);
   box-shadow: 0 8px 24px rgba(33, 127, 141, 0.07);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 
@@ -1011,7 +1012,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   inset: 0;
   opacity: 0.5;
   transform: translateX(-101%);
-  transition: transform 0.45s ease;
+  transition: transform var(--transition);
   background-size: cover;
 }
 
@@ -1734,7 +1735,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity var(--transition), transform var(--transition);
 }
 
 .single .site-main .grid_view figure:hover img {
@@ -1891,7 +1892,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .smb-tabs[data-orientation="horizontal"] .smb-tabs__tab-wrapper .smb-tabs__tab {
   border-radius: var(--radius) var(--radius) 0 0;
-  padding: var(--space-s) var(--space-m) !important;
+  padding: var(--space-s) var(--space-m);
 }
 
 .smb-tabs[data-orientation="horizontal"] > .smb-tabs__tabs .smb-tabs__tab[aria-selected="true"] {
@@ -1911,7 +1912,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.45s ease, opacity 0.45s ease;
+  transition: max-height var(--transition), opacity var(--transition);
 }
 
 .azarashi-toggle:checked ~ .footer-widgets {
@@ -1931,7 +1932,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .icon .u-arm {
   transform: translateY(100px);
-  transition: transform 0.35s ease 0.4s;
+  transition: transform var(--transition) 0.4s;
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -2251,7 +2252,7 @@ aside .title-section_aside {
     opacity: 0;
     pointer-events: none;
     transform: translateX(100%);
-    transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
+    transition: transform var(--transition), opacity var(--transition), visibility var(--transition);
   }
 
   body.drawer-open .drawer-nav {
@@ -2269,7 +2270,7 @@ aside .title-section_aside {
     visibility: hidden;
     background: rgba(37, 48, 54, 0.46);
     opacity: 0;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
+    transition: opacity var(--transition), visibility var(--transition);
   }
 
   body.drawer-open .drawer-overlay {
@@ -2509,7 +2510,7 @@ aside .title-section_aside {
   .link_area .toc-toggle-btn::after {
     content: '▼';
     font-size: var(--font-s);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition);
     flex-shrink: 0;
     margin-left: var(--space-s);
   }
@@ -2521,7 +2522,7 @@ aside .title-section_aside {
   .link_area .toc-body {
     overflow: hidden;
     max-height: 600px;
-    transition: max-height 0.4s ease;
+    transition: max-height var(--transition);
   }
 
   .link_area.is-toc-collapsed .toc-body {
