@@ -687,11 +687,11 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .sec_vis > .wp-block-group__inner-container > .wp-block-group:first-child,
 .sec_vis > .wp-block-group.is-layout-flex {
   display: grid;
-  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  grid-template-columns: 1fr 1fr 1fr;
   width: var(--width-content);
   margin-inline: auto;
   align-items: center;
-  gap: clamp(36px, 5vw, 72px);
+  gap: 36px;
 }
 
 .sec_vis_left,
