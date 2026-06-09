@@ -4,10 +4,6 @@
   "settings": {
     "appearanceTools": false,
     "useRootPaddingAwareAlignments": false,
-    "layout": {
-      "contentSize": "840px",
-      "wideSize": "1240px"
-    },
     "spacing": {
       "padding": false,
       "margin": false,
@@ -32,21 +28,6 @@
     "color": {
       "background": "#fff",
       "text": "#2d383d"
-    },
-    "spacing": {
-      "blockGap": "0",
-      "padding": {
-        "top": "0",
-        "right": "0",
-        "bottom": "0",
-        "left": "0"
-      },
-      "margin": {
-        "top": "0",
-        "right": "0",
-        "bottom": "0",
-        "left": "0"
-      }
     },
     "typography": {
       "fontSize": "16px",
