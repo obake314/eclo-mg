@@ -283,6 +283,10 @@ aside,
   flex: 0 0 300px;
 }
 
+.wp-block-search__input{
+  width: 70%;
+}
+
 .widget-area .wp-block-button{
   margin: 32px auto;
 }
@@ -1268,6 +1272,16 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   height: 100%;
   min-height: 360px;
   object-fit: cover;
+}
+
+.sec_about .figcaption .wp-block-buttons{
+  display: flex;
+  gap: var(--space-s);
+  width: 100%;
+}
+
+.sec_about .figcaption .wp-block-buttons>.wp-block-button{
+  width: 48%;
 }
 
 .sec_about h2,
@@ -2339,13 +2353,6 @@ aside .title-section_aside {
     align-items: center;
   }
 
-  .sec_contents .box_column .wp-block-post-title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-  }
-
   .sec_contents .box_column .wp-block-post-featured-image,
   .sec_contents .column_quicklink .wp-block-post-featured-image {
     flex: 0 0 auto;
@@ -2550,5 +2557,22 @@ aside .title-section_aside {
   display: grid;
   grid-template-columns: 1fr;
 }
+.sec_contents .box_column ul li a.wp-block-read-more{
+margin: 0;
+}
+ .footer-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+ }
+
+  .sec_about .figcaption .wp-block-buttons>.wp-block-button{
+  width: 47%;
+  }
+  .sec_about .wp-block-button a{
+  padding: 12px 12px;
+  font-size: 13px;
+  }
 
 }
