@@ -114,6 +114,16 @@ function azarashilove_async_yakuhanjp( $html, $handle ) {
     return $html;
 }
 
+function azarashilove_render_theme_pattern( $slug ) {
+	$file = get_theme_file_path( "patterns/{$slug}.php" );
+	if ( ! is_readable( $file ) ) {
+		return;
+	}
+	ob_start();
+	include $file;
+	echo do_blocks( ob_get_clean() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
 // --- template tags ---
 
 if ( ! function_exists( 'azarashilove_posted_on' ) ) :
