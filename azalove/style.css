@@ -26,16 +26,8 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   --color-white: #fff;
   --color-accent: #ea6c85;
   --color-accent-dark: #d1425f;
-  --color-key-color: var(--color-brand);
   --color-key-color2: var(--color-brand-soft);
   --color-key-dark: #242e5b;
-  --color-key-red: var(--color-accent);
-  --color-key-red-dark: var(--color-accent-dark);
-  --color-text-color: var(--color-ink);
-  --color-light-gray: var(--color-border);
-  --color-light-grey: var(--color-border);
-  --color-lightest-gray: #eef4f5;
-  --color-dark-grey: var(--color-muted);
   --font-base: YakuHanJP, system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   --font-headline: "Corinthia", cursive, serif;
   --font: 16px;
@@ -46,7 +38,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   --weight-normal: 400;
   --weight-medium: 500;
   --weight-bold: 600;
-  --space-xs: 8px;
   --space-s: 14px;
   --space-m: 28px;
   --space-l: 56px;
@@ -58,14 +49,17 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   --shadow: 0 14px 34px rgba(33, 127, 141, 0.1);
   --width-content: min(1240px, calc(100vw - 48px));
   --width-wide: min(1240px, calc(100vw - 48px));
-  --meta-date-bg: rgba(47, 159, 175, 0.08);
-  --meta-date-border: rgba(47, 159, 175, 0.2);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+:root :where(.is-layout-flow) > * {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 html {
@@ -1826,6 +1820,18 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   background: var(--color-brand-soft);
 }
 
+.box_itemlink .wp-block-heading,
+.site-main .entry-content .box_itemlink .wp-block-heading{
+    padding: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.box_itemlink .wp-block-buttons {
+  margin-top: var(--space-s);
+}
+
 .list_support > .wp-block-group__inner-container {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2458,8 +2464,7 @@ aside .title-section_aside {
     padding: var(--space-m) 0;
   }
 
-  .entry-header .entry-title,
-  .page-title {
+  .entry-header .entry-title{
     text-align: center;
   }
 
@@ -2525,6 +2530,7 @@ aside .title-section_aside {
 
   .link_area.is-toc-collapsed .toc-body {
     max-height: 0;
+    margin: 0;
   }
 
   .smb-tab-panel,
