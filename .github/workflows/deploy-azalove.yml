@@ -88,7 +88,7 @@ jobs:
           set net:max-retries 2
           set net:timeout 20
           mkdir -fp "$remote_theme"
-          mirror -R --delete --verbose \
+          mirror -R --delete --verbose --transfer-all \
             --exclude-glob .DS_Store \
             --exclude-glob node_modules/ \
             --exclude-glob vendor/ \
