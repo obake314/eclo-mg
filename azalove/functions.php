@@ -12,8 +12,8 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 
 add_theme_support( 'wp-block-styles' );
-add_theme_support( 'enable-layout-styles' );
 add_theme_support( 'block-template-parts' );
+
 
 /**
  * Theme Setup

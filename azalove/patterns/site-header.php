@@ -3,8 +3,7 @@
  * Title: Site Header
  * Slug: azarashilove/site-header
  * Categories: azarashilove-site, header
- * Block Types: core/template-part/header
- * Inserter: true
+ * Inserter: false
  *
  * @package azarashilove
  */

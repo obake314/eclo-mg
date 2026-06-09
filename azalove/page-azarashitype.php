@@ -32,7 +32,19 @@ if ( wp_get_post_parent_id($current_id) === $parent_id ) : ?>
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content', 'page' );
+			?>
+			<div class="entry-content">
+				<?php
+				the_content();
+				wp_link_pages(
+					array(
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'azarashilove' ),
+						'after'  => '</div>',
+					)
+				);
+				?>
+			</div>
+			<?php
 
 
 		endwhile; // End of the loop.

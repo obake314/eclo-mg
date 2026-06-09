@@ -468,8 +468,8 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .btn_contact,
 .btn_donation {
-  margin-top: var(--space-m);
   text-align: center;
+  margin-top: 0;
 }
 
 .btn_contact a,
@@ -787,6 +787,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   box-shadow: 0 8px 24px rgba(33, 127, 141, 0.07);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
+
 
 .list_pickup li,
 .list_pickup .wp-block-column > .wp-block-group {
@@ -1234,16 +1235,13 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .sec_about,
 .sec_donation {
-  padding: var(--space-xl) 0;
-  background: var(--color-panel);
-}
-
-.home .sec_about {
-  margin-top: -50px;
+  padding:  var(--space-l) 0 0;
+  background: var(--color-key-color2);
 }
 
 .sec_about .wrap,
 .sec_donation .wrap {
+  background: var(--color-white);
   display: flex;
   align-items: stretch;
   overflow: hidden;
@@ -1252,8 +1250,8 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   box-shadow: var(--shadow);
 }
 
-.sec_about figcaption,
-.sec_donation figcaption {
+.sec_about .figcaption,
+.sec_donation .figcaption {
   flex: 1 1 60%;
   padding: clamp(28px, 4.6vw, 52px);
 }
@@ -1273,7 +1271,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .sec_about h2,
 .sec_donation h2 {
-  margin-bottom: var(--space-m);
+  margin-bottom: 0;
 }
 
 /* 支援ページ: entry-content 先頭 h2 の上余白を削除 */
@@ -1287,6 +1285,10 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .list_support .wp-block-buttons,
 .list_support .wp-block-button {
   margin-bottom: var(--space-s);
+}
+
+.list_support .wp-block-group{
+  gap: var(--space-l);
 }
 
 .list_support > .wp-block-group__inner-container > .wp-block-group > *:last-child {
@@ -1350,7 +1352,8 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .item_info,
 .block_facility ul > li .facility_info{
-  padding: 12px 16px; 
+  padding: 12px 16px;
+  position: static;
 }
 
 .block_items ul > li h3,
@@ -1649,6 +1652,14 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .list_post .excerpt {
   color: var(--color-muted);
   font-size: var(--font-s);
+}
+
+.single .page-header{
+  padding: 0;
+}
+
+.single .site-main-wrap{
+  margin-top:var(--space-l);
 }
 
 .single .cat-links {

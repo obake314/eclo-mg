@@ -16,26 +16,26 @@
 			<figcaption>
 				<h2 class="title-section">About us<span>アザラブとは</span></h2>
 				<figure class="sp_only">
-					<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2021/11/azarashi_img06.jpg" alt="あざ活の促進" loading="lazy">
+					<img src="/wp-content/uploads/2021/11/azarashi_img06.jpg" alt="あざ活の促進" loading="lazy">
 				</figure>
 				<p>アザラブとはあざらしを愛する「アザラー」のためのアザラシ総合情報サイトです。<br>
 				水族館や動物園で飼育されているアザラシ、野生のアザラシ、ともに支援して、アザラシを取り巻く環境が良くなる手助けができたらと思い運営しています。<br>
 				管理人の可愛いと思った動画やグッズなどの情報を共有して、あざらし活動（あざ活）の促進になればと思います。皆様とあざらしのいい出会いがあったらうれしいです。</p>
-				<div class="flexbox">
-					<p class="btn btn_donation"><a class="prun" href="<?php echo esc_url( home_url( '/' ) ); ?>donation">あざらしを支援する</a></p>
-					<p class="btn btn_contact"><a class="prun" target="_blank" href="https://x.com/_azalove" rel="noopener">X</a></p>
+				<div class="flexbox btn">
+					<p class="btn_donation"><a class="prun" href="/donation">あざらしを支援する</a></p>
+					<p class="btn_contact"><a class="prun" target="_blank" href="https://x.com/_azalove" rel="noopener">X</a></p>
 				</div>
 			</figcaption>
 			<figure class="pc_only">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/seal01.jpg" loading="lazy" alt="あざらしを支援する">
+				<img src="/wp-content/uploads/seal01.jpg" loading="lazy" alt="あざらしを支援する">
 			</figure>
 		</div>
 	</section>
 	<nav>
 		<ul class="flexbox">
-			<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>about">このサイトについて</a></li>
-			<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>policy">プライバシーポリシー</a></li>
-			<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>contact">お問い合わせ</a></li>
+			<li><a href="/about">このサイトについて</a></li>
+			<li><a href="/policy">プライバシーポリシー</a></li>
+			<li><a href="/contact">お問い合わせ</a></li>
 		</ul>
 	</nav>
 	<aside class="azarashi-feed" style="display:none;">
@@ -53,13 +53,7 @@
 				</svg>
 			</button>
 		</p>
-		<div id="azarashi-feed-content" class="footer-widgets" hidden inert aria-hidden="true">
-			<?php if ( is_active_sidebar( 'footer-widgets' ) ) : ?>
-				<div class="footer-widgets">
-					<?php dynamic_sidebar( 'footer-widgets' ); ?>
-				</div>
-			<?php endif; ?>
-		</div>
+		<div id="azarashi-feed-content" class="footer-widgets" hidden inert aria-hidden="true"></div>
 	</aside>
 	<p class="site-info">© アザラブ</p>
 </footer>

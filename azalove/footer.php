@@ -10,7 +10,7 @@
  */
 
 ?>
-<?php azarashilove_render_theme_pattern( 'site-footer' ); ?>
+<?php block_template_part( 'footer' ); ?>
 </div>
 <?php wp_footer(); ?>
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">

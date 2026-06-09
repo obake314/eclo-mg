@@ -26,20 +26,45 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+				?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<header class="entry-header">
+					<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+					<?php if ( 'post' === get_post_type() ) : ?>
+					<div class="entry-meta">
+						<?php
+						azarashilove_posted_on();
+						azarashilove_posted_by();
+						?>
+					</div>
+					<?php endif; ?>
+				</header>
+				<?php azarashilove_post_thumbnail(); ?>
+				<div class="entry-summary">
+					<?php the_excerpt(); ?>
+				</div>
+				<footer class="entry-footer">
+					<?php azarashilove_entry_footer(); ?>
+				</footer>
+			</article>
+			<?php
 
 			endwhile;
 
 			the_posts_navigation();
 
 		else :
-
-			get_template_part( 'template-parts/content', 'none' );
+			?>
+			<section class="no-results not-found">
+				<header class="page-header">
+					<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'azarashilove' ); ?></h1>
+				</header>
+				<div class="page-content">
+					<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'azarashilove' ); ?></p>
+					<?php get_search_form(); ?>
+				</div>
+			</section>
+			<?php
 
 		endif;
 		?>
