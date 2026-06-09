@@ -2339,6 +2339,13 @@ aside .title-section_aside {
     align-items: center;
   }
 
+  .sec_contents .box_column .wp-block-post-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
   .sec_contents .box_column .wp-block-post-featured-image,
   .sec_contents .column_quicklink .wp-block-post-featured-image {
     flex: 0 0 auto;
