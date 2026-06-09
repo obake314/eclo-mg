@@ -101,27 +101,6 @@ function azarashilove_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'azarashilove_scripts' );
 
-/**
- * global-styles-inline-css / core-block-supports-inline-css より後で
- * テーマ CSS を確実に優先させるため、wp_footer で <style> を直接出力する。
- * wp_footer は head 内の全スタイル出力より後に実行されるため順序が保証される。
- */
-add_action( 'wp_footer', function () {
-	$file = get_template_directory() . '/style.css';
-	if ( ! file_exists( $file ) ) {
-		return;
-	}
-	$css = file_get_contents( $file );
-
-	// テーマヘッダーコメント (/*! ... */) を除去
-	$css = preg_replace( '/^\/\*![\s\S]*?\*\//m', '', $css );
-
-	// @import は <style> 内では無効になるため除去（フォントは <link> で読み込み済み）
-	$css = preg_replace( '/^@import\s+[^\n]+;/m', '', $css );
-
-	echo '<style id="azarashilove-theme-overrides">' . $css . '</style>';
-}, PHP_INT_MAX );
-
 // yakuhanjpを非同期化
 add_filter( 'style_loader_tag', 'azarashilove_async_yakuhanjp', 10, 2 );
 function azarashilove_async_yakuhanjp( $html, $handle ) {
