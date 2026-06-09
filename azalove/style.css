@@ -2008,6 +2008,10 @@ aside .title-section_aside {
   font-weight: var(--weight-medium);
 }
 
+.widget_block .wp-block-search__inside-wrapper{
+  width: 70%;
+}
+
 /* サイドバーのコラム・ニュースリスト: TOPの新着ニュースと同スタイル */
 #secondary .wp-block-latest-posts {
   list-style: none;
