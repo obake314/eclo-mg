@@ -48,7 +48,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   --radius: 8px;
   --radius-lg: 18px;
   --transition: 0.3s ease;
-  --shadow: 0 14px 34px rgba(33, 127, 141, 0.1);
+  --shadow: 0 8px 24px rgba(33, 127, 141, 0.07);
   --width-content: min(1240px, calc(100vw - 48px));
 }
 
@@ -456,7 +456,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   font-weight: var(--weight-medium);
   line-height: 1;
   padding: var(--space-s) var(--space-m);
-  box-shadow: 0 8px 20px rgba(36, 46, 91, 0.12);
+  box-shadow: var(--shadow);
 }
 
 .wp-block-button a:hover,
@@ -784,7 +784,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-white);
-  box-shadow: 0 8px 24px rgba(33, 127, 141, 0.07);
+  box-shadow: var(--shadow);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
@@ -1111,7 +1111,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-white);
-  box-shadow: 0 8px 24px rgba(33, 127, 141, 0.07);
+  box-shadow: var(--shadow);
 }
 
 .sec_contents .box_column .wp-block-post-featured-image {
@@ -2247,7 +2247,7 @@ aside .title-section_aside {
     gap: var(--space-m);
     overflow: hidden;
     background: var(--color-brand);
-    box-shadow: -10px 0 30px rgba(37, 48, 54, 0.18);
+    box-shadow: var(--shadow);
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -2270,7 +2270,7 @@ aside .title-section_aside {
     visibility: hidden;
     background: rgba(37, 48, 54, 0.46);
     opacity: 0;
-    transition: opacity var(--transition), visibility var(--transition);
+    transition: var(--transition);
   }
 
   body.drawer-open .drawer-overlay {
@@ -2353,7 +2353,7 @@ aside .title-section_aside {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-white);
-    box-shadow: 0 8px 24px rgba(33, 127, 141, 0.07);
+    box-shadow: var(--shadow);
   }
 
   .sec_contents .box_column .wp-block-post {
