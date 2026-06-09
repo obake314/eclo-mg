@@ -2338,6 +2338,8 @@ aside .title-section_aside {
   .sec_contents .column_quicklink .wp-block-post-featured-image {
     flex: 0 0 auto;
     width: 100%;
+    margin: 0;
+    overflow: hidden;
     border-radius: 0;
   }
 
@@ -2346,6 +2348,7 @@ aside .title-section_aside {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 
   .sec_contents .column_quicklink .text {
