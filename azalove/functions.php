@@ -447,6 +447,33 @@ function facility_default_thumbnail($html, $post_id, $post_thumbnail_id, $size, 
 }
 
 /**
+ * アザラシイラストURLをテーマ svg/azarashi/ から返す
+ */
+function azarashilove_illust_url( $attachment_id ) {
+	$file = get_post_meta( (int) $attachment_id, '_wp_attached_file', true );
+	if ( $file ) {
+		return get_template_directory_uri() . '/svg/azarashi/' . basename( $file );
+	}
+	return wp_get_attachment_url( $attachment_id );
+}
+
+add_filter( 'render_block', 'azarashilove_illust_block_src', 10, 2 );
+function azarashilove_illust_block_src( $block_content, $block ) {
+	if (
+		( $block['blockName'] ?? '' ) !== 'mfb/meta-field-block' ||
+		( $block['attrs']['fieldName'] ?? '' ) !== 'azarashi_illust'
+	) {
+		return $block_content;
+	}
+	$attachment_id = get_post_meta( get_the_ID(), 'azarashi_illust', true );
+	$url           = azarashilove_illust_url( $attachment_id );
+	if ( $url ) {
+		$block_content = preg_replace( '/\ssrc="[^"]*"/', ' src="' . esc_url( $url ) . '"', $block_content );
+	}
+	return $block_content;
+}
+
+/**
  * =============================================================================
  * AJAX: Get ACF Image from Post
  * =============================================================================
@@ -456,29 +483,20 @@ add_action( 'wp_ajax_az_fig', 'azarashilove_ajax_get_figure' );
 
 function azarashilove_ajax_get_figure() {
 	$href = isset( $_POST['href'] ) ? esc_url_raw( $_POST['href'] ) : '';
-	
+
 	if ( ! $href ) {
 		wp_send_json_error( array( 'msg' => 'no href' ), 400 );
 	}
 
 	$post_id = url_to_postid( $href );
-	
+
 	if ( ! $post_id ) {
 		wp_send_json_error( array( 'msg' => 'not found' ), 404 );
 	}
 
-	$field_value = get_field( 'azarashi_illust', $post_id );
-	
-	if ( is_array( $field_value ) ) {
-		$url = isset( $field_value['url'] ) ? $field_value['url'] : '';
-		$alt = isset( $field_value['alt'] ) ? $field_value['alt'] : '';
-	} elseif ( is_numeric( $field_value ) ) {
-		$url = wp_get_attachment_url( $field_value );
-		$alt = get_post_meta( $field_value, '_wp_attachment_image_alt', true );
-	} else {
-		$url = $field_value;
-		$alt = '';
-	}
+	$attachment_id = get_post_meta( $post_id, 'azarashi_illust', true );
+	$alt           = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+	$url           = azarashilove_illust_url( $attachment_id );
 
 	if ( ! $url ) {
 		wp_send_json_error( array( 'msg' => 'no url' ), 404 );

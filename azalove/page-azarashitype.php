@@ -20,7 +20,7 @@ if ( wp_get_post_parent_id($current_id) === $parent_id ) : ?>
     学名：<?php the_field("azarashi_scientific"); ?><br>
     生息地域：<?php the_field("azarashi_location_text"); ?><br>
   </div>
-<figure><img src="<?php the_field("azarashi_illust"); ?>"></figure>
+<figure><img src="<?php echo esc_url( azarashilove_illust_url( get_post_meta( get_the_ID(), 'azarashi_illust', true ) ) ); ?>"></figure>
  </div>
 <figure>
 	<?php azarashilove_post_thumbnail(); ?>

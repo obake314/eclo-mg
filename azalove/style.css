@@ -25,12 +25,15 @@ Text Domain: azarashilove
 
   --font-s: 13px;
   --font-m: 16px;
+  --font-l: 24px;
   --font-xl: 32px;
   --font-xxl: 48px;
   
   --weight-normal: 400;
   --weight-medium: 500;
   --weight-bold: 600;
+
+  --space-xs: 6px;
   --space-s: 12px;
   --space-m: 24px;
   --space-l: 60px;
@@ -72,7 +75,7 @@ body {
   color: var(--color-ink);
   background: var(--color-white);
   font-family: var(--font-base);
-  font-size: var(--font);
+  font-size: var(--font-m);
   font-weight: var(--weight-normal);
   line-height: var(--lh-loose);
   letter-spacing: 0;
@@ -447,6 +450,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   font-size: var(--font-xl);
   font-weight: 400;
   line-height: var(--lh-tight);
+  margin-bottom: var(--space-m);
 }
 .title-section span,
 .title-section h2 {
@@ -525,7 +529,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   border-radius: var(--radius);
   background: var(--color-brand-soft);
   color: var(--color-brand-dark);
-  font-size: var(--font-xl);
+  font-size: var(--font-l);
   font-weight: var(--weight-medium);
   line-height: var(--lh-base);
 }
@@ -538,7 +542,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   padding: 0 0 var(--space-s);
   border-bottom: var(--border);
   color: var(--color-brand-dark);
-  font-size: var(--font-xl);
+  font-size: var(--font-m);
   font-weight: var(--weight-medium);
   line-height: var(--lh-base);
 }
@@ -940,7 +944,6 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 .sec_contents .grid_contents .title-section {
   align-items: center;
-  min-height: 64px;
   margin-bottom: var(--space-m);
 }
 .sec_contents .grid_contents .title-section h2 {
@@ -1103,6 +1106,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   display: flex;
   gap: var(--space-s);
   width: 100%;
+  margin-top: var(--space-m);
 }
 .sec_about .figcaption .wp-block-buttons>.wp-block-button{
   width: 48%;
@@ -1140,7 +1144,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 .block_facility ul > li.is-has-report::before,
 .list_facility > li.is-has-report::before {
-  content: "report";
+  content: "レポート";
   position: absolute;
   top: 10px;
   left: 10px;
@@ -1606,7 +1610,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   border-bottom: 1px dashed var(--color-border);
 }
 .list_support .organization::before {
-  content: "donation";
+  content: "寄付先";
   display: inline-flex;
   margin-right: var(--space-s);
   border-radius: 999px;
@@ -1614,7 +1618,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   color: var(--color-white);
   font-size: var(--font-s);
   line-height: var(--lh-tight);
-  padding: 0 var(--space-s);
+  padding: var(--space-xs) var(--space-s);
 }
 .smb-tab-panel {
   padding: clamp(24px, 4vw, 48px);
@@ -1624,7 +1628,24 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   padding: 0;
   border: 0;
   background: transparent;
+  font-size: var(--font-l);
 }
+.smb-tabs__body .wp-block-paragraph a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    min-width: 128px;
+    border-radius: 999px;
+    border: var(--border-brand);
+    color: var(--color-brand);
+    font-size: var(--font-m);
+    font-weight: var(--weight-medium);
+    line-height: var(--lh-tight);
+    padding: var(--space-s) var(--space-m);
+}
+
 .smb-tabs[data-orientation="horizontal"] .smb-tabs__tab-wrapper .smb-tabs__tab {
   border-radius: var(--radius) var(--radius) 0 0;
   padding: var(--space-s) var(--space-m);
@@ -1711,6 +1732,9 @@ footer nav ul,
   justify-content: center;
   gap: var(--gap-card);
   margin-bottom: var(--space-m);
+}
+.footer-menu {
+  padding: var(--space-l) 0;
 }
 .site-info {
   color: var(--color-muted);
