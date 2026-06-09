@@ -3,8 +3,7 @@
  * Title: Site Footer
  * Slug: azarashilove/site-footer
  * Categories: azarashilove-site, footer
- * Block Types: core/template-part/footer
- * Inserter: true
+ * Inserter: false
  *
  * @package azarashilove
  */

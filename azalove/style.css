@@ -2323,7 +2323,6 @@ aside .title-section_aside {
 
   /* 人気コラム: SP では box_column と同じ縦カード表示に */
   .sec_contents .column_quicklink {
-    flex-direction: column;
     align-items: stretch;
     min-height: 0;
     gap: 0;
