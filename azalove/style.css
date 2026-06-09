@@ -437,6 +437,11 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   transform: rotate(-45deg);
 }
 
+.btn{
+  text-align: center;
+  margin-top: var(--space-m);
+}
+
 .wp-block-button a,
 .btn a {
   position: relative;
