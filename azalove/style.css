@@ -125,7 +125,7 @@ ol {
 
 p + p,
 .entry-content p + p {
-  margin-top: 0.85em;
+  margin-top: var(--space-s);
 }
 
 h1,
@@ -195,7 +195,7 @@ textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background: var(--color-white);
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 textarea {
@@ -211,7 +211,7 @@ table {
 th,
 td {
   border-bottom: 1px solid var(--color-border);
-  padding: 12px;
+  padding: var(--space-s);
   text-align: left;
   vertical-align: top;
 }
@@ -309,7 +309,7 @@ aside,
   clip: auto !important;
   clip-path: none;
   margin: 0;
-  padding: 12px;
+  padding: var(--space-s);
   border-radius: var(--radius);
   background: var(--color-white);
   box-shadow: var(--shadow);
@@ -320,7 +320,7 @@ aside,
 .site-header {
   position: relative;
   z-index: 200;
-  padding: 24px 0;
+  padding: var(--space-m) 0;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(14px);
 }
@@ -454,7 +454,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   font-size: var(--font-s);
   font-weight: var(--weight-medium);
   line-height: 1;
-  padding: 12px 24px;
+  padding: var(--space-s) var(--space-m);
   box-shadow: 0 8px 20px rgba(36, 46, 91, 0.12);
 }
 
@@ -475,7 +475,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .btn_donation a {
   width: min(280px, 100%);
   min-height: 58px;
-  padding: 12px 72px 12px 24px;
+  padding: var(--space-s) 72px var(--space-s) var(--space-m);
   background: var(--color-accent-dark);
   font-size: var(--font-m);
 }
@@ -506,7 +506,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .title-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-s);
   color: var(--color-brand);
   font-family: var(--font-headline);
   font-size: var(--font-l);
@@ -528,7 +528,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .title-section p {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-s);
   margin: 0;
   color: var(--color-brand);
   font-family: var(--font-headline);
@@ -539,7 +539,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .title-section .wp-block-group__inner-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-s);
 }
 
 .page-header,
@@ -583,7 +583,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .entry-content > * + * {
   margin: 0;
-  margin-top: 24px;
+  margin-top: var(--space-m);
     width: 100%;
 }
 
@@ -593,7 +593,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .single-facility .section-title,
 .main_facility .section-title {
   margin: var(--space-l) 0 var(--space-m);
-  padding: 12px;
+  padding: var(--space-s);
   border-radius: var(--radius);
   background: var(--color-brand-soft);
   color: var(--color-brand-dark);
@@ -609,7 +609,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .entry-content h3 {
   margin: var(--space-l) 0 var(--space-s);
-  padding: 0 0 12px;
+  padding: 0 0 var(--space-s);
   border-bottom: 1px solid var(--color-border);
   color: var(--color-brand-dark);
   font-size: var(--font-l);
@@ -695,7 +695,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .sec_vis > .list_pickup{
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
+    gap: var(--space-m);
 }
 
 .sec_vis_left,
@@ -790,7 +790,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .list_pickup li,
 .list_pickup .wp-block-column > .wp-block-group {
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 .list_pickup li:hover,
@@ -818,7 +818,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .list_pickup li a {
   display: grid;
   grid-template-columns: 76px 1fr;
-  gap: 12px;
+  gap: var(--space-s);
   min-height: 120px;
   padding: var(--pad-card);
   align-items: center;
@@ -837,7 +837,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .list_pickup h2 {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-s);
   color: var(--color-brand-dark);
   font-size: var(--font-m);
   font-weight: var(--weight-medium);
@@ -845,7 +845,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .grid_contents li{
-  margin-bottom: 24px;
+  margin-bottom: var(--space-m);
 }
 
 
@@ -878,12 +878,12 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .sec_news .title-section {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-m);
 }
 
 .list_news_recent li {
   position: relative;
-  padding: 12px 0;
+  padding: var(--space-s) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -908,8 +908,8 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .list_news_recent .meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: var(--space-s);
+  margin-bottom: var(--space-s);
 }
 
 .list_news_recent .cats,
@@ -922,7 +922,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   color: var(--color-brand-dark);
   font-size: var(--font-xs);
   line-height: 1;
-  padding: 0 12px;
+  padding: 0 var(--space-s);
 }
 
 .list_news_recent h3 {
@@ -996,7 +996,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   display: grid;
   place-items: center;
   height: 112px;
-  padding: 24px 12px 0;
+  padding: var(--space-m) var(--space-s) 0;
 }
 
 .list_azarashi_block ul li .is-acf-field {
@@ -1060,7 +1060,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .list_azarashi li p {
   height: 54px;
   margin: 0;
-  padding: 12px 0;
+  padding: var(--space-s) 0;
   color: var(--color-ink);
   font-size: var(--font-s);
   font-weight: var(--weight-medium);
@@ -1078,13 +1078,13 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .sec_contents .title-section {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-m);
 }
 
 .sec_contents .grid_contents .title-section {
   align-items: center;
   min-height: 64px;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-m);
 }
 
 
@@ -1126,7 +1126,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .sec_contents .box_column .wp-block-post-title {
   margin: 0;
-  padding: 12px 24px 24px;
+  padding: var(--space-s) var(--space-m) var(--space-m);
   color: var(--color-brand-dark);
   font-size: var(--font-m);
   font-weight: var(--weight-medium);
@@ -1160,7 +1160,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .grid_contents .wp-block-column {
   display: grid;
   grid-template-columns: 58px 1fr;
-  gap: 12px;
+  gap: var(--space-s);
   align-items: center;
   padding: var(--pad-card);
   background: var(--color-brand-soft);
@@ -1220,7 +1220,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .sec_contents .column_quicklink .text {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 12px 0;
+  padding: var(--space-s) 0;
 }
 
 .sec_contents .column_quicklink .wp-block-post-title {
@@ -1300,7 +1300,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .list_support > .wp-block-group__inner-container > .wp-block-group > *:last-child {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-m);
 }
 
 .main_facility {
@@ -1328,7 +1328,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   font-size: var(--font-xs);
   font-weight: var(--weight-medium);
   line-height: 1;
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 .block_items ul > li a.wp-block-read-more,
@@ -1360,14 +1360,14 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .item_info,
 .block_facility ul > li .facility_info{
-  padding: 12px;
+  padding: var(--space-s);
   position: static;
 }
 
 .block_items ul > li h3,
 .block_facility ul > li h3,
 .list_facility li figcaption h3 {
-  margin: 0 0 12px;
+  margin: 0 0 var(--space-s);
   color: var(--color-ink);
   font-size: var(--font-m);
   font-weight: var(--weight-medium);
@@ -1430,7 +1430,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .facility-list li .facility-item_text {
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 .facility-list li .facility-item_text h4 {
@@ -1460,13 +1460,13 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .facility-post-header > figure .inyo {
-  margin-top: 12px;
+  margin-top: var(--space-s);
   color: var(--color-muted);
   font-size: var(--font-s);
 }
 
 .facility-post-header .figcaption h1 {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-m);
   padding-bottom: var(--space-s);
   border-bottom: 1px solid var(--color-border);
   font-size: var(--font-m);
@@ -1494,7 +1494,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .facility-post-header .area_outline table tr:last-child td {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-s);
 }
 
 .facility-post-header .area_outline table tr:last-child td a,
@@ -1509,7 +1509,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   font-size: var(--font-s);
   font-weight: var(--weight-medium);
   line-height: 1;
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 .facility-grouped-list {
@@ -1524,7 +1524,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .title-section-azarashi,
 .view_azarashi h3 {
   margin: var(--space-m) 0 var(--space-s);
-  padding: 12px;
+  padding: var(--space-s);
   border-radius: var(--radius);
   background: var(--color-brand-soft);
   color: var(--color-brand-dark);
@@ -1536,7 +1536,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .url_facility {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-s);
 }
 
 .facility-data dt {
@@ -1573,7 +1573,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .list_fc_azarashi {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
+  gap: var(--space-m);
 }
 
 .list_fc_azarashi > li {
@@ -1584,7 +1584,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .list_fc_azarashi > li figcaption {
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 .view_azarashi {
@@ -1622,7 +1622,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .site-main .entry-content .link_area ul li a {
   display: block;
-  padding: 12px;
+  padding: var(--space-s);
   text-align: center;
 }
 
@@ -1651,7 +1651,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .list_post h2,
 .list_post h3 {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-s);
   font-size: var(--font-m);
   font-weight: var(--weight-medium);
   line-height: 1.55;
@@ -1672,14 +1672,14 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .single .cat-links {
   margin: var(--space-m) 0;
-  padding: 12px 0;
+  padding: var(--space-s) 0;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
 .single .cat-links .post-categories li {
   display: inline-block;
-  margin: 0 12px 0 0;
+  margin: 0 var(--space-s) 0 0;
 }
 
 .single .cat-links .post-categories li a {
@@ -1687,7 +1687,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   border: 1px solid var(--color-brand);
   border-radius: 999px;
   color: var(--color-brand-dark);
-  padding: 0 12px;
+  padding: 0 var(--space-s);
 }
 
 .single .nav-links {
@@ -1699,7 +1699,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .single .nav-links > div a {
   display: flex;
-  gap: 12px;
+  gap: var(--space-s);
   align-items: center;
 }
 
@@ -1714,7 +1714,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   color: var(--color-white);
   font-size: var(--font-s);
   line-height: 1;
-  padding: 12px;
+  padding: var(--space-s);
 }
 
 .grid_view {
@@ -1760,7 +1760,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
   z-index: 9999;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: var(--space-m);
 }
 
 .image-modal__backdrop {
@@ -1823,7 +1823,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 .box_itemlink .wp-block-heading,
 .site-main .entry-content .box_itemlink .wp-block-heading{
     padding: 0;
-    margin-bottom: 12px;
+    margin-bottom: var(--space-s);
     font-size: var(--font-l);
     line-height: 1;
 }
@@ -1848,7 +1848,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .list_support > .wp-block-group__inner-container > .wp-block-group h3 {
   margin: 0;
-  padding: 24px;
+  padding: var(--space-m);
   border: 0;
   background: var(--color-brand);
   color: var(--color-white);
@@ -1857,25 +1857,25 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 }
 
 .list_support > .wp-block-group__inner-container > .wp-block-group > *:not(h3) {
-  margin-inline: 24px;
+  margin-inline: var(--space-m);
 }
 
 .list_support .organization {
-  margin-top: 12px;
-  padding-bottom: 12px;
+  margin-top: var(--space-s);
+  padding-bottom: var(--space-s);
   border-bottom: 1px dashed var(--color-border);
 }
 
 .list_support .organization::before {
   content: "donation";
   display: inline-flex;
-  margin-right: 12px;
+  margin-right: var(--space-s);
   border-radius: 999px;
   background: var(--color-muted);
   color: var(--color-white);
   font-size: var(--font-s);
   line-height: 1;
-  padding: 0 12px;
+  padding: 0 var(--space-s);
 }
 
 .smb-tab-panel {
@@ -1891,7 +1891,7 @@ body.drawer-open .drawer-toggle span:nth-child(3) {
 
 .smb-tabs[data-orientation="horizontal"] .smb-tabs__tab-wrapper .smb-tabs__tab {
   border-radius: var(--radius) var(--radius) 0 0;
-  padding: 12px 24px !important;
+  padding: var(--space-s) var(--space-m) !important;
 }
 
 .smb-tabs[data-orientation="horizontal"] > .smb-tabs__tabs .smb-tabs__tab[aria-selected="true"] {
@@ -2029,7 +2029,7 @@ aside .title-section_aside {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 12px 0;
+  padding: var(--space-s) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -2174,7 +2174,7 @@ aside .title-section_aside {
   }
 
   .site-header .wrap {
-    padding-inline: 24px;
+    padding-inline: var(--space-m);
   }
 
   .list_azarashi_block ul,
@@ -2211,11 +2211,11 @@ aside .title-section_aside {
   }
 
   .site-header {
-    padding: 12px 0;
+    padding: var(--space-s) 0;
   }
 
   .site-header .wrap {
-    padding-inline: 12px;
+    padding-inline: var(--space-s);
   }
 
   .site-branding,
@@ -2239,11 +2239,11 @@ aside .title-section_aside {
     display: flex;
     width: 100%;
     height: 100vh;
-    padding: 96px 24px 36px;
+    padding: 96px var(--space-m) 36px;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 24px;
+    gap: var(--space-m);
     overflow: hidden;
     background: var(--color-brand);
     box-shadow: -10px 0 30px rgba(37, 48, 54, 0.18);
@@ -2291,7 +2291,7 @@ aside .title-section_aside {
 
   .drawer-nav .menu-main-container a {
     color: var(--color-white);
-    padding: 12px 0;
+    padding: var(--space-s) 0;
     text-align: center;
   }
 
@@ -2379,13 +2379,13 @@ aside .title-section_aside {
   }
 
   .sec_contents .column_quicklink .text {
-    padding: 12px;
+    padding: var(--space-s);
   }
 
   .list_pickup li a {
     grid-template-columns: 70px 1fr;
     min-height: 112px;
-    padding: 24px;
+    padding: var(--space-m);
   }
 
   .sec_news .wrap {
@@ -2495,7 +2495,7 @@ aside .title-section_aside {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px;
+    padding: var(--space-s);
     border: 0;
     border-radius: 0;
     background: var(--color-brand-soft);
@@ -2511,7 +2511,7 @@ aside .title-section_aside {
     font-size: var(--font-s);
     transition: transform 0.3s ease;
     flex-shrink: 0;
-    margin-left: 12px;
+    margin-left: var(--space-s);
   }
 
   .link_area.is-toc-collapsed .toc-toggle-btn::after {
@@ -2531,7 +2531,7 @@ aside .title-section_aside {
 
   .smb-tab-panel,
   .tab_danation .smb-tab-panel {
-    padding: 24px;
+    padding: var(--space-m);
   }
 
   .smb-tabs[data-orientation="horizontal"][data-tabs-justification="flex-start"] > .smb-tabs__tabs {
@@ -2542,14 +2542,14 @@ aside .title-section_aside {
   .title-section p {
     align-items: flex-start;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-s);
   }
 
   .sec_contents .grid_contents .title-section,
   .sec_contents .grid_contents .title-section .wp-block-group__inner-container {
     align-items: flex-start;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-s);
     min-height: auto;
   }
 
@@ -2557,7 +2557,7 @@ aside .title-section_aside {
   .site-footer nav ul {
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-s);
   }
 
 .grid_view{
@@ -2571,14 +2571,14 @@ margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-s);
  }
 
   .sec_about .figcaption .wp-block-buttons>.wp-block-button{
   width: 47%;
   }
   .sec_about .wp-block-button a{
-  padding: 12px 12px;
+  padding: var(--space-s);
   font-size: var(--font-s);
   }
 
