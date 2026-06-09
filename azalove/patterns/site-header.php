@@ -31,6 +31,24 @@
 					'theme_location' => 'menu-1',
 					'menu_id'        => 'primary-menu',
 					'menu_class'     => 'flexbox',
+					'fallback_cb'    => function() {
+						$items = array(
+							array( 'url' => '/species',                    'label' => 'アザラシの種類' ),
+							array( 'url' => '/archives/category/news',     'label' => 'アザラシニュース' ),
+							array( 'url' => '/facility',                   'label' => 'アザラシ施設' ),
+							array( 'url' => '/archives/category/column',   'label' => 'アザラシコラム' ),
+							array( 'url' => '/items',                      'label' => 'アザラシアイテム' ),
+						);
+						echo '<div class="menu-main-container"><ul id="primary-menu" class="flexbox">';
+						foreach ( $items as $item ) {
+							printf(
+								'<li class="menu-item"><a href="%s">%s</a></li>',
+								esc_url( home_url( $item['url'] ) ),
+								esc_html( $item['label'] )
+							);
+						}
+						echo '</ul></div>';
+					},
 				)
 			);
 			?>
