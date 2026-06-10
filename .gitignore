@@ -1,23 +1,11 @@
 ### Track only selected eclo-mg managed sites
 /*
 
-### elegirl-serv git dir (managed separately)
-/.git-elegirl-serv/
-
 !/.gitignore
 !/README.md
-
-### .github: track only eclo-mg's own workflows
-### (elegirl-serv shares this dir but its files are ignored here)
 !/.github/
-/.github/*
 !/.github/workflows/
-/.github/workflows/*
-!/.github/workflows/deploy-avant-p.yml
-!/.github/workflows/deploy-azalove.yml
-!/.github/workflows/deploy-baba_farm.yml
-!/.github/workflows/deploy-ok-berlin.yml
-!/.github/workflows/deploy-spacenoid.yml
+!/.github/workflows/**
 !/avant-p/
 !/spacenoid/
 !/azalove/
