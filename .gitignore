@@ -1,17 +1,18 @@
 ### Track only selected eclo-mg managed sites
 /*
 
-### elegirl-serv (managed separately — do not add to eclo-mg)
+### elegirl-serv git dir (managed separately)
 /.git-elegirl-serv/
-/.github/workflows/deploy-wordpress-doctor-theme.yml
-/.github/workflows/deploy-elegirl.yml
-/.github/workflows/deploy-capital-block.yml
-/.github/workflows/deploy-kitamura-new.yml
 
 !/.gitignore
 !/README.md
+
+### .github: track only eclo-mg's own workflows
+### (elegirl-serv shares this dir but its files are ignored here)
 !/.github/
+/.github/*
 !/.github/workflows/
+/.github/workflows/*
 !/.github/workflows/deploy-avant-p.yml
 !/.github/workflows/deploy-azalove.yml
 !/.github/workflows/deploy-baba_farm.yml
